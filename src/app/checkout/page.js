@@ -37,7 +37,7 @@ export default function Checkout() {
   async function getAllAddresses() {
     const res = await fetchAllAddresses(user?._id);
 
-    if (res.success) {
+    if (res?.success) {
       setAddresses(res.data);
     }
   }
@@ -80,7 +80,7 @@ export default function Checkout() {
 
         const res = await createNewOrder(createFinalCheckoutFormData);
 
-        if (res.success) {
+        if (res?.success) {
           setIsOrderProcessing(false);
           setOrderSuccess(true);
           toast.success(res.message, {

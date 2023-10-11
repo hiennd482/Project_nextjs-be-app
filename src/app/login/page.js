@@ -47,7 +47,7 @@ export default function Login() {
 
     console.log(res);
 
-    if (res.success) {
+    if (res?.success) {
       toast.success(res.message, {
         position: toast.POSITION.TOP_RIGHT,
       });

@@ -23,7 +23,7 @@ export default function OrderDetails() {
 
     const res = await getOrderDetails(params["order-details"]);
 
-    if (res.success) {
+    if (res?.success) {
       setPageLevelLoader(false);
       setOrderDetails(res.data);
     } else {

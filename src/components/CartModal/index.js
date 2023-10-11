@@ -24,7 +24,7 @@ export default function CartModal() {
   async function extractAllCartItems() {
     const res = await getAllCartItems(user?._id);
 
-    if (res.success) {
+    if (res?.success) {
       const updatedData =
         res.data && res.data.length
           ? res.data.map((item) => ({
@@ -59,7 +59,7 @@ export default function CartModal() {
     setComponentLevelLoader({ loading: true, id: getCartItemID });
     const res = await deleteFromCart(getCartItemID);
 
-    if (res.success) {
+    if (res?.success) {
       setComponentLevelLoader({ loading: false, id: "" });
       toast.success(res.message, {
         position: toast.POSITION.TOP_RIGHT,
