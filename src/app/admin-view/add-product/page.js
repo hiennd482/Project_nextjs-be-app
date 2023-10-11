@@ -132,7 +132,7 @@ export default function AdminAddNewProduct() {
       });
 
       setFormData(initialFormData);
-      setCurrentUpdatedProduct(null)
+      setCurrentUpdatedProduct(null);
       setTimeout(() => {
         router.push("/admin-view/all-products");
       }, 1000);
@@ -144,27 +144,47 @@ export default function AdminAddNewProduct() {
       setFormData(initialFormData);
     }
   }
+  const input = document.getElementById("upload-img");
+  // input.addEventListener(
+  //   ("change",
+  //   (e) => {
+  //     const file = e.target.files[0];
+  //     const url = URL.createObjectURL(file);
+  //     document.querySelector("img").src = url;
+  //   })
 
-  console.log(formData);
+  // );
+  if (input) {
+    input.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      const url = URL.createObjectURL(file);
+      document.querySelector("img").src = url;
+    });
+  }
+
+  // console.log(formData);
 
   return (
     <div className="w-full mt-5 mr-0 mb-0 ml-0 relative">
       <div className="flex flex-col items-start justify-start p-10 bg-white shadow-2xl rounded-xl relative">
         <div className="w-full mt-6 mr-0 mb-0 ml-0 space-y-8">
           <input
+            id="upload-img"
             accept="image/*"
             max="1000000"
             type="file"
             onChange={handleImage}
+            className="text-black"
           />
 
+          <img className="max-h-[20%] max-w-[20%]"></img>
           <div className="flex gap-2 flex-col">
             <label>Available sizes</label>
-            <TileComponent
+            {/* <TileComponent
               selected={formData.sizes}
               onClick={handleTileClick}
               data={AvailableSizes}
-            />
+            /> */}
           </div>
           {adminAddProductformControls.map((controlItem) =>
             controlItem.componentType === "input" ? (
@@ -196,11 +216,15 @@ export default function AdminAddNewProduct() {
           )}
           <button
             onClick={handleAddProduct}
-            className="inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg text-white font-medium uppercase tracking-wide"
+            className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
           >
             {componentLevelLoader && componentLevelLoader.loading ? (
               <ComponentLevelLoader
-                text={currentUpdatedProduct !== null ? 'Updating Product' : "Adding Product"}
+                text={
+                  currentUpdatedProduct !== null
+                    ? "Updating Product"
+                    : "Adding Product"
+                }
                 color={"#ffffff"}
                 loading={componentLevelLoader && componentLevelLoader.loading}
               />

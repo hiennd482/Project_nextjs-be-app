@@ -5,7 +5,7 @@ import { GlobalContext } from "@/context";
 import { addToCart } from "@/services/cart";
 import { deleteAProduct } from "@/services/product";
 import { usePathname, useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 
 export default function ProductButton({ item }) {
@@ -24,23 +24,34 @@ export default function ProductButton({ item }) {
 
   async function handleDeleteProduct(item) {
     setComponentLevelLoader({ loading: true, id: item._id });
-
     const res = await deleteAProduct(item._id);
-    alert("Delete product", item._id);
-    // if (res.success) {
-    //   setComponentLevelLoader({ loading: false, id: "" });
-    //   toast.success(res.message, {
-    //     position: toast.POSITION.TOP_RIGHT,
-    //   });
-    //   router.refresh();
-    // } else {
-    //   toast.error(res.message, {
-    //     position: toast.POSITION.TOP_RIGHT,
-    //   });
-    //   setComponentLevelLoader({ loading: false, id: "" });
-    // }
-  }
 
+    let check = confirm(`Delete product ${item.name} ?`);
+    // if (check == true) {
+    //   setComponentLevelLoader({ loading: true, id: item._id });
+    //   await deleteAProduct(item._id);
+    // } else {
+    //   // setComponentLevelLoader({ loading: false, id: item._id });
+    //   console.log("huy delate");
+    // }
+    if (check == true) {
+      if (res.success) {
+        setComponentLevelLoader({ loading: false, id: "" });
+        toast.success(res.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        router.refresh();
+      }
+    } else {
+      toast.error(res.message, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      setComponentLevelLoader({ loading: false, id: "" });
+    }
+  }
+  useEffect(() => {
+    setComponentLevelLoader();
+  }, []);
   async function handleAddToCart(getItem) {
     setComponentLevelLoader({ loading: true, id: getItem._id });
 
@@ -70,13 +81,13 @@ export default function ProductButton({ item }) {
           setCurrentUpdatedProduct(item);
           router.push("/admin-view/add-product");
         }}
-        className="mt-1.5 flex w-full justify-center bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
+        className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900"
       >
         Update
       </button>
       <button
         onClick={() => handleDeleteProduct(item)}
-        className="mt-1.5 flex w-full justify-center bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
+        className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
       >
         {componentLevelLoader &&
         componentLevelLoader.loading &&

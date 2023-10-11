@@ -13,9 +13,13 @@ export const metadata = {
 
 export default function Admin({ children }) {
   return (
-    <>
-      <Sidebar></Sidebar>
-      <div className="flex-2">{children}</div>
-    </>
+    <div className="">
+      {/* <div className="flex"> */}
+      <div className="flex">
+        <Sidebar></Sidebar>
+        <div className="flex-[2_2_50%]">{children}</div>
+      </div>
+      {/* </div> */}
+    </div>
   );
 }
