@@ -23,7 +23,7 @@ export default function AdminView() {
 
     console.log(res);
 
-    if (res.success) {
+    if (res?.success) {
       setPageLevelLoader(false);
       setAllOrdersForAllUsers(
         res.data && res.data.length
@@ -48,7 +48,7 @@ export default function AdminView() {
       isProcessing: false,
     });
 
-    if (res.success) {
+    if (res?.success) {
       setComponentLevelLoader({ loading: false, id: "" });
       extractAllOrdersForAllUsers();
     } else {

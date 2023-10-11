@@ -125,7 +125,7 @@ export default function AdminAddNewProduct() {
 
     console.log(res);
 
-    if (res.success) {
+    if (res?.success) {
       setComponentLevelLoader({ loading: false, id: "" });
       toast.success(res.message, {
         position: toast.POSITION.TOP_RIGHT,

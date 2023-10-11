@@ -31,13 +31,13 @@ export default function Account() {
 
   const [showAddressForm, setShowAddressForm] = useState(false);
   const [currentEditedAddressId, setCurrentEditedAddressId] = useState(null);
-  const router = useRouter()
+  const router = useRouter();
 
   async function extractAllAddresses() {
     setPageLevelLoader(true);
     const res = await fetchAllAddresses(user?._id);
 
-    if (res.success) {
+    if (res?.success) {
       setPageLevelLoader(false);
 
       setAddresses(res.data);
@@ -56,7 +56,7 @@ export default function Account() {
 
     console.log(res);
 
-    if (res.success) {
+    if (res?.success) {
       setComponentLevelLoader({ loading: false, id: "" });
       toast.success(res.message, {
         position: toast.POSITION.TOP_RIGHT,
@@ -102,7 +102,7 @@ export default function Account() {
 
     const res = await deleteAddress(getCurrentAddressID);
 
-    if (res.success) {
+    if (res?.success) {
       setComponentLevelLoader({ loading: false, id: "" });
 
       toast.success(res.message, {
@@ -137,7 +137,10 @@ export default function Account() {
               <p>{user?.email}</p>
               <p>{user?.role}</p>
             </div>
-            <button onClick={()=>router.push('/orders')} className="mt-5  inline-block bg-black text-white px-5 py-3 text-xs font-medium uppercase tracking-wide">
+            <button
+              onClick={() => router.push("/orders")}
+              className="mt-5  inline-block bg-black text-white px-5 py-3 text-xs font-medium uppercase tracking-wide"
+            >
               View Your Orders
             </button>
             <div className="mt-6">
