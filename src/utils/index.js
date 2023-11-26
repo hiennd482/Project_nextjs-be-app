@@ -1,40 +1,56 @@
 export const navOptions = [
   {
     id: "home",
-    label: "Home",
+    label: "Trang chủ",
     path: "/",
   },
   {
     id: "listing",
-    label: "All Products",
+    label: "Sản phẩm",
     path: "/product/listing/all-products",
   },
   {
-    id: "listingMen",
-    label: "Men",
+    id: "vegetable",
+    label: "Cửa hàng",
     path: "/product/listing/men",
   },
   {
     id: "listingWomen",
-    label: "Women",
+    label: "Về chúng tôi",
+    path: "/product/listing/women",
+  },
+];
+export const sieBarOps = [
+  {
+    id: "listing",
+    label: "Tất cả sản phẩm",
+    path: "/product/listing/all-products",
+  },
+  {
+    id: "vegetable",
+    label: "Rau củ quả",
+    path: "/product/listing/men",
+  },
+  {
+    id: "listingWomen",
+    label: "Ngũ cốc, Đậu & Hạt",
     path: "/product/listing/women",
   },
   {
     id: "listingKids",
-    label: "kids",
+    label: " Thức uống",
     path: "/product/listing/kids",
   },
 ];
-
 export const adminNavOptions = [
   {
     id: "adminListing",
-    label: "Manage All Products",
+    label: " ",
     path: "/admin-view/all-products",
   },
   {
     id: "adminNewProduct",
-    label: "Add New Product",
+    label: " ",
     path: "/admin-view/add-product",
   },
 ];
@@ -127,16 +143,16 @@ export const adminAddProductformControls = [
     componentType: "select",
     options: [
       {
-        id: "men",
-        label: "Men",
+        id: "rau",
+        label: "Rau củ quả",
       },
       {
-        id: "women",
-        label: "Women",
+        id: "ngucoc",
+        label: "Ngũ cốc, Đậu & Hạt",
       },
       {
-        id: "kids",
-        label: "Kids",
+        id: "nuocuong",
+        label: "Thức uống",
       },
     ],
   },

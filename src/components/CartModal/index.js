@@ -32,7 +32,7 @@ export default function CartModal() {
               productID: {
                 ...item.productID,
                 price:
-                  item.productID.onSale === "yes"
+                  item.productID?.onSale === "yes"
                     ? parseInt(
                         (
                           item.productID.price -
@@ -40,7 +40,7 @@ export default function CartModal() {
                             (item.productID.priceDrop / 100)
                         ).toFixed(2)
                       )
-                    : item.productID.price,
+                    : item.productID?.price,
               },
             }))
           : [];
@@ -107,9 +107,11 @@ export default function CartModal() {
                       </h3>
                     </div>
                     <p className="mt-1 text-sm text-gray-600">
-                      {cartItem &&
-                        cartItem.productID &&
-                        cartItem.productID.price}{" "}
+                      {Intl.NumberFormat("vi-VN").format(
+                        cartItem &&
+                          cartItem.productID &&
+                          cartItem.productID.price
+                      )}{" "}
                       vnd
                     </p>
                   </div>
@@ -130,7 +132,7 @@ export default function CartModal() {
                           }
                         />
                       ) : (
-                        "Remove"
+                        "Xóa"
                       )}
                     </button>
                   </div>
@@ -148,9 +150,9 @@ export default function CartModal() {
               router.push("/cart");
               setShowCartModal(false);
             }}
-            className="mt-1.5 w-full inline-block bg-black text-white px-5 py-3 text-xs font-medium uppercase tracking-wide"
+            className="mt-1.5 w-full inline-block rounded-md bg-green-custom text-white px-5 py-3 text-xs font-medium uppercase tracking-wide"
           >
-            Go To Cart
+            Tới giỏ hàng
           </button>
           <button
             disabled={cartItems && cartItems.length === 0}
@@ -159,13 +161,13 @@ export default function CartModal() {
               router.push("/checkout");
               setShowCartModal(false);
             }}
-            className="mt-1.5 w-full inline-block bg-black text-white px-5 py-3 text-xs font-medium uppercase tracking-wide disabled:opacity-50"
+            className="mt-1.5 w-full inline-block rounded-md bg-blue-custom text-white px-5 py-3 text-xs font-medium uppercase tracking-wide disabled:opacity-50"
           >
-            Checkout
+            Thanh toán
           </button>
           <div className="mt-6 flex justify-center text-center text-sm text-gray-600">
             <button type="button" className="font-medium text-grey">
-              Continue Shopping
+              Tiếp tục mua sắm
               <span aria-hidden="true"> &rarr;</span>
             </button>
           </div>

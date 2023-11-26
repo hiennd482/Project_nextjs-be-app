@@ -45,11 +45,13 @@ export default function CommonCart({
                               </p>
                             </div>
                             <div className="mt-4 flex gap-3 items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
-                              <p className="shrink-0 w-20 text-base font-semibold text-gray-950 sm:order-1 sm:ml-8 sm:text-right">
+                              <p className="shrink-0 w-auto text-base font-semibold text-gray-950 sm:order-1 sm:ml-8 sm:text-right">
                                 {cartItem &&
                                   cartItem.productID &&
-                                  cartItem.productID.price}
-                                vnd
+                                  Intl.NumberFormat("vi-VN").format(
+                                    cartItem.productID.price
+                                  )}{" "}
+                                vnđ
                               </p>
                               <button
                                 type="button"
@@ -70,7 +72,7 @@ export default function CommonCart({
                                     }
                                   />
                                 ) : (
-                                  "Remove"
+                                  "Xóa"
                                 )}
                               </button>
                             </div>
@@ -80,44 +82,49 @@ export default function CommonCart({
                     ))}
                   </ul>
                 ) : (
-                  <h1 className="font-bold text-lg">Your cart is Empty !</h1>
+                  <h1 className="font-bold text-lg">Giỏ hàng trống</h1>
                 )}
               </div>
               <div className="mt-6 border-t border-b py-2">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm text-gray-400">Subtotal</p>
+                  <p className="text-sm text-gray-400">Tổng phụ thu</p>
                   <p className="text-lg text-black font-semibold">
-                    {cartItems && cartItems.length
-                      ? cartItems.reduce(
-                          (total, item) => item.productID.price + total,
-                          0
-                        )
-                      : "0"}
-                    vnd
+                    {Intl.NumberFormat("vi-VN").format(
+                      cartItems && cartItems.length
+                        ? cartItems.reduce(
+                            (total, item) => item.productID.price + total,
+                            0
+                          )
+                        : "0"
+                    )}{" "}
+                    vnđ
                   </p>
                 </div>
                 <div className="flex items-center justify-between">
-                  <p className="text-sm text-gray-400">Shipping</p>
+                  <p className="text-sm text-gray-400">Phí ship</p>
                   <p className="text-lg text-black font-semibold">0đ</p>
                 </div>
                 <div className="flex items-center justify-between">
-                  <p className="text-sm text-gray-400">Total</p>
+                  <p className="text-sm text-gray-400">Tổng tiền</p>
                   <p className="text-lg text-black font-semibold">
-                    {cartItems && cartItems.length
-                      ? cartItems.reduce(
-                          (total, item) => item.productID.price + total,
-                          0
-                        )
-                      : "0"}
+                    {Intl.NumberFormat("vi-VN").format(
+                      cartItems && cartItems.length
+                        ? cartItems.reduce(
+                            (total, item) => item.productID.price + total,
+                            0
+                          )
+                        : "0"
+                    )}{" "}
+                    vnđ
                   </p>
                 </div>
                 <div className="mt-5 text-center">
                   <button
                     onClick={() => router.push("/checkout")}
                     disabled={cartItems && cartItems.length === 0}
-                    className="disabled:opacity-50 group inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg text-white font-medium uppercase tracking-wide"
+                    className="disabled:opacity-50 group inline-flex rounded-md w-full items-center justify-center bg-blue-custom px-6 py-4 text-lg text-white font-medium uppercase tracking-wide"
                   >
-                    Checkout
+                    Thanh toán
                   </button>
                 </div>
               </div>

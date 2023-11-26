@@ -393,7 +393,7 @@ export default function AdminView() {
           </ul>
         </nav>
       </div>
-      <section>
+      {/* <section>
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div>
             <div className="px-4 py-6 sm:px-8 sm:py-10">
@@ -486,7 +486,7 @@ export default function AdminView() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

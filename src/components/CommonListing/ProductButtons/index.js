@@ -83,7 +83,7 @@ export default function ProductButton({ item }) {
         }}
         className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900"
       >
-        Update
+        Cập nhật
       </button>
       <button
         onClick={() => handleDeleteProduct(item)}
@@ -93,12 +93,12 @@ export default function ProductButton({ item }) {
         componentLevelLoader.loading &&
         item._id === componentLevelLoader.id ? (
           <ComponentLevelLoader
-            text={"Deleting Product"}
+            text={"Đang xóa"}
             color={"#ffffff"}
             loading={componentLevelLoader && componentLevelLoader.loading}
           />
         ) : (
-          "DELETE"
+          "Xóa"
         )}
       </button>
     </>
@@ -112,12 +112,12 @@ export default function ProductButton({ item }) {
         componentLevelLoader.loading &&
         componentLevelLoader.id === item._id ? (
           <ComponentLevelLoader
-            text={"Adding to cart"}
+            text={"Đang thêm vào giỏ hàng"}
             color={"#ffffff"}
             loading={componentLevelLoader && componentLevelLoader.loading}
           />
         ) : (
-          "Add To Cart"
+          "Thêm vào giỏ hàng"
         )}
       </button>
     </>

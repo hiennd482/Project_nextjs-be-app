@@ -7,7 +7,8 @@ import CommonModal from "../CommonModal";
 import Cookies from "js-cookie";
 import { usePathname, useRouter } from "next/navigation";
 import CartModal from "../CartModal";
-
+import Image from "next/image";
+import iconPath from "@/assets/index";
 function NavItems({ isModalView = false, isAdminView, router }) {
   return (
     <div
@@ -33,7 +34,7 @@ function NavItems({ isModalView = false, isAdminView, router }) {
             ))
           : navOptions.map((item) => (
               <li
-                className="cursor-pointer block py-2 pl-3 pr-4 text-gray-900 rounded md:p-0"
+                className="cursor-pointer hover:text-green-500 block py-2 pl-3 pr-4 text-gray-900 rounded md:p-0"
                 key={item.id}
                 onClick={() => router.push(item.path)}
               >
@@ -89,16 +90,14 @@ export default function Navbar() {
             onClick={() => router.push("/")}
             className="flex items-center cursor-pointer"
           >
-            <span className="slef-center text-2xl font-semibold whitespace-nowrap">
-              Shop Dhien
-            </span>
+            <Image src={iconPath.logoBig} alt="logo"></Image>
           </div>
           <div className="flex md:order-2 gap-2">
             {!isAdminView && isAuthUser ? (
               <Fragment>
                 <button
                   className={
-                    "mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
+                    "mt-1.5 inline-block bg-green-custom px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
                   }
                   onClick={() => router.push("/account")}
                 >
@@ -106,7 +105,7 @@ export default function Navbar() {
                 </button>
                 <button
                   className={
-                    "mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
+                    "mt-1.5 inline-block bg-green-custom px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
                   }
                   onClick={() => setShowCartModal(true)}
                 >
@@ -118,7 +117,7 @@ export default function Navbar() {
               isAdminView ? (
                 <button
                   className={
-                    "mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
+                    "mt-1.5 inline-block bg-green-custom px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
                   }
                   onClick={() => router.push("/")}
                 >
@@ -128,7 +127,7 @@ export default function Navbar() {
                 <button
                   onClick={() => router.push("/admin-view")}
                   className={
-                    "mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
+                    "mt-1.5 inline-block bg-green-custom px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
                   }
                 >
                   Admin View
@@ -139,7 +138,7 @@ export default function Navbar() {
               <button
                 onClick={handleLogout}
                 className={
-                  "mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
+                  "mt-1.5 inline-block bg-green-custom px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
                 }
               >
                 Logout
@@ -148,7 +147,7 @@ export default function Navbar() {
               <button
                 onClick={() => router.push("/login")}
                 className={
-                  "mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
+                  "mt-1.5 inline-block bg-green-custom px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
                 }
               >
                 Login

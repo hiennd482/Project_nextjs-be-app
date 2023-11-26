@@ -61,7 +61,7 @@ const initialFormData = {
   name: "",
   price: 0,
   description: "",
-  category: "men",
+  category: "Rau củ quả",
   sizes: [],
   deliveryInfo: "",
   onSale: "no",
@@ -158,7 +158,7 @@ export default function AdminAddNewProduct() {
     input.addEventListener("change", (e) => {
       const file = e.target.files[0];
       const url = URL.createObjectURL(file);
-      document.querySelector("img").src = url;
+      document.querySelector("#thumb").src = url;
     });
   }
 
@@ -170,16 +170,16 @@ export default function AdminAddNewProduct() {
         <div className="w-full mt-6 mr-0 mb-0 ml-0 space-y-8">
           <input
             id="upload-img"
-            accept="image/*"
+            // accept="image/*"
             max="1000000"
             type="file"
             onChange={handleImage}
             className="text-black"
           />
 
-          <img className="max-h-[20%] max-w-[20%]"></img>
+          <img className="max-h-[20%] max-w-[20%] " id="thumb"></img>
           <div className="flex gap-2 flex-col">
-            <label>Available sizes</label>
+            {/* <label>Available sizes</label> */}
             {/* <TileComponent
               selected={formData.sizes}
               onClick={handleTileClick}

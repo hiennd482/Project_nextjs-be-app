@@ -42,8 +42,10 @@ export default function Orders() {
     if (user !== null) extractAllOrders();
   }, [user]);
 
+  allOrdersForUser?.sort(
+    (a, b) => new Date(b.paidAt).getTime() - new Date(a.paidAt).getTime()
+  );
   console.log(allOrdersForUser);
-
   if (pageLevelLoader) {
     return (
       <div className="w-full min-h-screen flex justify-center items-center">
@@ -73,14 +75,25 @@ export default function Orders() {
                       >
                         <div className="flex">
                           <h1 className="font-bold text-lg mb-3 flex-1">
-                            #order: {item._id}
+                            Mã đơn hàng: #{item._id}
+                            <div className="text-sm font-normal">
+                              Thời gian đặt hàng:{" "}
+                              {new Date(item.paidAt).toLocaleDateString(
+                                "en-GB",
+                                { hour12: false }
+                              )}
+                            </div>
                           </h1>
+
                           <div className="flex items-center">
                             <p className="mr-3 text-sm font-medium text-gray-900">
-                              Total paid amount
+                              Tổng tiền:
                             </p>
                             <p className="mr-3 text-2xl  font-semibold text-gray-900">
-                              {item.totalPrice}vnd
+                              {Intl.NumberFormat("vi-VN").format(
+                                item.totalPrice
+                              )}
+                              vnd
                             </p>
                           </div>
                         </div>
@@ -99,17 +112,26 @@ export default function Orders() {
                             </div>
                           ))}
                         </div>
-                        <div className="flex gap-5">
-                          <button className="disabled:opacity-50 mt-5 mr-5  inline-block bg-black text-white px-5 py-3 text-xs font-medium uppercase tracking-wide">
-                            {item.isProcessing
-                              ? "Order is Processing"
-                              : "Order is delivered"}
-                          </button>
+                        <div className="flex gap-5 items-center justify-between">
+                          <div className="flex  items-center">
+                            <p className="text-sm ">Trạng thái đơn hàng: </p>
+                            <p
+                              className={` inline-block ${
+                                item.isProcessing === false
+                                  ? "text-green-custom"
+                                  : "text-black-custom"
+                              }  px-5 py-3 text-base font-medium uppercase tracking-wide`}
+                            >
+                              {item.isProcessing
+                                ? "Đang chờ xử lý"
+                                : "Đơn hàng đã được vận chuyển"}
+                            </p>
+                          </div>
                           <button
                             onClick={() => router.push(`/orders/${item._id}`)}
-                            className=" mt-5 mr-5  inline-block bg-black text-white px-5 py-3 text-xs font-medium uppercase tracking-wide"
+                            className=" mt-5 mr-5 rounded-md hover:bg-yellow-custom transition hover:text-black inline-block bg-blue-custom text-white px-5 py-3 text-xs font-medium uppercase tracking-wide"
                           >
-                            View Order Details
+                            Xem chi tiết đơn hàng
                           </button>
                         </div>
                       </li>

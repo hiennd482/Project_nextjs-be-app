@@ -66,14 +66,14 @@ export default function CommonListing({ data }) {
                       class="ml-1 text-gray-700 md:ml-2 dark:text-gray-500"
                       aria-current="page"
                     >
-                      Products
+                      Sản phẩm
                     </span>
                   </div>
                 </li>
               </ol>
             </nav>
             <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
-              All products
+              Quản lý sản phẩm
             </h1>
           </div>
           <div class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700">
@@ -88,7 +88,7 @@ export default function CommonListing({ data }) {
                     name="email"
                     id="products-search"
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="Search for products"
+                    placeholder="Tìm kiếm sản phẩm"
                   />
                 </div>
               </form>
@@ -171,7 +171,7 @@ export default function CommonListing({ data }) {
               data-drawer-placement="right"
               onClick={() => router.push("/admin-view/add-product")}
             >
-              Add new product
+              Thêm mới
             </button>
           </div>
         </div>
@@ -187,26 +187,26 @@ export default function CommonListing({ data }) {
                 <div class="flex items-center">stt</div>
               </th>
               <th scope="col" class="px-6 py-3">
-                Product name
+                Tên sản phẩm
                 {/* data?.sort((a: any, b: any) => b.id - a.id */}
               </th>
               <th scope="col" class="px-6 py-3">
-                Image
+                Ảnh
               </th>
               <th scope="col" class="px-6 py-3">
-                Category
+                Danh mục
               </th>
               <th scope="col" class="px-6 py-3">
-                Price
+                Giá
               </th>
               <th scope="col" class="px-6 py-3">
-                Discount
+                Giảm giá
               </th>
               <th scope="col" class="px-6 py-3">
-                Description
+                Thông tin
               </th>
               <th scope="col" class="px-6 py-3">
-                Action
+                Chức năng
               </th>
             </tr>
           </thead>
@@ -234,7 +234,7 @@ export default function CommonListing({ data }) {
                     <td className="px-6 py-4">
                       {item.priceDrop ? `${item.priceDrop}%` : "0"}
                     </td>
-                    <td className="px-6 py-4">{item.description}</td>
+                    <td className="px-6 py-4">{item.deliveryInfo}</td>
                     <td class="flex gap-2 px-6 py-4 items-center ">
                       <ProductButton item={item} />
                     </td>
@@ -248,29 +248,19 @@ export default function CommonListing({ data }) {
           class="flex items-center justify-between pt-4"
           aria-label="Table navigation"
         >
-          <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Showing{" "}
-            <span class="font-semibold text-gray-900 dark:text-white">
-              1-10
-            </span>{" "}
-            of{" "}
-            <span class="font-semibold text-gray-900 dark:text-white">
-              1000
-            </span>
-          </span>
           <ul class="inline-flex -space-x-px text-sm h-8">
             <li>
               <a
                 href="#"
                 class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
-                Previous
+                Trước
               </a>
             </li>
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
               >
                 1
               </a>
@@ -287,7 +277,7 @@ export default function CommonListing({ data }) {
               <a
                 href="#"
                 aria-current="page"
-                class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 3
               </a>
@@ -313,7 +303,7 @@ export default function CommonListing({ data }) {
                 href="#"
                 class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
-                Next
+                Tiếp
               </a>
             </li>
           </ul>

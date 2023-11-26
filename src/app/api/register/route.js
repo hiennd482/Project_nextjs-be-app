@@ -35,10 +35,15 @@ export async function POST(req) {
     const isUserAlreadyExists = await User.findOne({ email });
 
     if (isUserAlreadyExists) {
-      return NextResponse.json({
-        success: false,
-        message: "User is already exists. Please try with different email.",
-      });
+      return NextResponse.json(
+        {
+          success: false,
+          message: "User is already exists. Please try with different email.",
+        },
+        {
+          status: 201,
+        }
+      );
     } else {
       const hashPassword = await hash(password, 12);
 

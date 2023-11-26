@@ -5,6 +5,7 @@ import ProductButton from "./ProductButtons";
 import ProductTile from "./ProductTile";
 import { useEffect } from "react";
 import Notification from "../Notification";
+import { sieBarOps } from "@/utils";
 
 export default function CommonListingClient({ data }) {
   const router = useRouter();
@@ -17,50 +18,22 @@ export default function CommonListingClient({ data }) {
             <p className="text-xl">SẢN PHẨM HOT</p>
 
             <div className="mt-6">
-              <p className="text-md text-[#22B24C]">Quần phổ thông</p>
-              <ul className="ml-4 list-disc">
-                <li className="text-md ml-3 mt-3 hover:text-[#22B24C] cursor-pointer">
-                  Quần hot boy
-                </li>
-                <li className="text-md ml-3 mt-3 hover:text-[#22B24C] cursor-pointer">
-                  Quần cao bồi
-                </li>
-                <li className="text-md ml-3 mt-3 hover:text-[#22B24C] cursor-pointer">
-                  Quần chăn bò
-                </li>
-                <li className="text-md ml-3 mt-2 hover:text-[#22B24C] cursor-pointer">
-                  Quần siêu nhân
-                </li>
-                <li className="text-md ml-3 mt-2 hover:text-[#22B24C] cursor-pointer">
-                  Quần hot boy
-                </li>
-                <li className="text-md ml-3 mt-2 hover:text-[#22B24C] cursor-pointer">
-                  Quần cao bồi
-                </li>
-                <li className="text-md ml-3 mt-2 hover:text-[#22B24C] cursor-pointer">
-                  Quần chăn bò
-                </li>
-                <li className="text-md ml-3 mt-2 hover:text-[#22B24C] cursor-pointer">
-                  Quần siêu nhân
-                </li>
-              </ul>
-
+              {/* <p className="text-md text-[#22B24C]">Quần phổ thông</p> */}
               <ul className="mt-5">
-                <li className="text-md mt-2 cursor-pointer">Quần hot boy</li>
-                <li className="text-md mt-2 cursor-pointer">Quần cao bồi</li>
-                <li className="text-md mt-2 cursor-pointer">Quần chăn bò</li>
-                <li className="text-md mt-2 cursor-pointer">Quần siêu nhân</li>
-                <li className="text-md mt-2 cursor-pointer">Quần hot boy</li>
-                <li className="text-md mt-2 cursor-pointer">Quần cao bồi</li>
-                <li className="text-md mt-2 cursor-pointer">Quần chăn bò</li>
-                <li className="text-md mt-2 cursor-pointer">Quần siêu nhân</li>
+                {sieBarOps.map((item) => (
+                  <li
+                    key={item.id}
+                    onClick={() => router.push(item.path)}
+                    className="text-md mt-2 cursor-pointer hover:text-green-500"
+                  >
+                    {item.label}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
 
           <div className="w-[1100px] ml-24">
-            <p className="ml-5 text-xl">RAU ĂN LÁ (32)</p>
-
             <div className="flex flex-wrap">
               {data && data.length
                 ? data.map((prd) => (
@@ -72,7 +45,9 @@ export default function CommonListingClient({ data }) {
                       <img src={prd.imageUrl} className="w-full" />
                       <div className="p-3">
                         <p className="text-xl">{prd.name}</p>
-                        <p className="pt-3 text-[#22B24C]">{prd.price}Đ</p>
+                        <p className="pt-3 text-[#22B24C]">
+                          {Intl.NumberFormat("vi-VN").format(prd.price)}vnd
+                        </p>
                         <p>{prd.category}</p>
                       </div>
                       <ProductButton item={prd} />

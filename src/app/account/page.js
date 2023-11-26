@@ -141,10 +141,10 @@ export default function Account() {
               onClick={() => router.push("/orders")}
               className="mt-5  inline-block bg-black text-white px-5 py-3 text-xs font-medium uppercase tracking-wide"
             >
-              View Your Orders
+              Xem đơn hàng của bạn
             </button>
             <div className="mt-6">
-              <h1 className="font-bold text-lg">Your Addresses :</h1>
+              <h1 className="font-bold text-lg">Địa chỉ của bạn :</h1>
               {pageLevelLoader ? (
                 <PulseLoader
                   color={"#000000"}
@@ -157,16 +157,16 @@ export default function Account() {
                   {addresses && addresses.length ? (
                     addresses.map((item) => (
                       <div className="border p-6" key={item._id}>
-                        <p>Name : {item.fullName}</p>
-                        <p>Address : {item.address}</p>
-                        <p>City : {item.city}</p>
-                        <p>Country : {item.country}</p>
-                        <p>PostalCode : {item.postalCode}</p>
+                        <p>Tên : {item.fullName}</p>
+                        <p>Địa chỉ : {item.address}</p>
+                        <p>Thành phố : {item.city}</p>
+                        <p>Tỉnh : {item.country}</p>
+                        <p>Mã vùng : {item.postalCode}</p>
                         <button
                           onClick={() => handleUpdateAddress(item)}
                           className="mt-5 mr-5 inline-block bg-black text-white px-5 py-3 text-xs font-medium uppercase tracking-wide"
                         >
-                          Update
+                          Cập nhật
                         </button>
                         <button
                           onClick={() => handleDelete(item._id)}
@@ -176,7 +176,7 @@ export default function Account() {
                           componentLevelLoader.loading &&
                           componentLevelLoader.id === item._id ? (
                             <ComponentLevelLoader
-                              text={"Deleting"}
+                              text={"Đang xóa"}
                               color={"#ffffff"}
                               loading={
                                 componentLevelLoader &&
@@ -184,13 +184,13 @@ export default function Account() {
                               }
                             />
                           ) : (
-                            "Delete"
+                            "Xóa"
                           )}
                         </button>
                       </div>
                     ))
                   ) : (
-                    <p>No address found ! Please add a new address below</p>
+                    <p>Không tìm thấy địa chỉ ! Vui lòng nhập địa chỉ</p>
                   )}
                 </div>
               )}
@@ -200,7 +200,7 @@ export default function Account() {
                 onClick={() => setShowAddressForm(!showAddressForm)}
                 className="mt-5  inline-block bg-black text-white px-5 py-3 text-xs font-medium uppercase tracking-wide"
               >
-                {showAddressForm ? "Hide Address Form" : "Add New Address"}
+                {showAddressForm ? "Ân bớt" : "Thêm địa chỉ mới"}
               </button>
             </div>
             {showAddressForm ? (
@@ -227,14 +227,14 @@ export default function Account() {
                 >
                   {componentLevelLoader && componentLevelLoader.loading ? (
                     <ComponentLevelLoader
-                      text={"Saving"}
+                      text={"Đang lưu"}
                       color={"#ffffff"}
                       loading={
                         componentLevelLoader && componentLevelLoader.loading
                       }
                     />
                   ) : (
-                    "Save"
+                    "Lưu"
                   )}
                 </button>
               </div>

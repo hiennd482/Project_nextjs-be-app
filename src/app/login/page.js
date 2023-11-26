@@ -79,7 +79,7 @@ export default function Login() {
           <div className="w-full mt-10 mr-0 mb-0 ml-0 relative max-w-2xl lg:mt-0 lg:w-5/12">
             <div className="flex flex-col items-center justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl relative z-10">
               <p className="w-full text-4xl font-medium text-center font-serif">
-                Login
+                Đăng nhập
               </p>
               <div className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
                 {loginFormControls.map((controlItem) =>
@@ -99,7 +99,7 @@ export default function Login() {
                   ) : null
                 )}
                 <button
-                  className="disabled:opacity-50 inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg 
+                  className="disabled:opacity-50 inline-flex w-full items-center justify-center rounded-md bg-green-custom px-6 py-4 text-lg 
                      text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide
                      "
                   disabled={!isValidForm()}
@@ -107,25 +107,25 @@ export default function Login() {
                 >
                   {componentLevelLoader && componentLevelLoader.loading ? (
                     <ComponentLevelLoader
-                      text={"Logging In"}
+                      text={"Loading..."}
                       color={"#ffffff"}
                       loading={
                         componentLevelLoader && componentLevelLoader.loading
                       }
                     />
                   ) : (
-                    "Login"
+                    "Đăng nhập"
                   )}
                 </button>
                 <div className="flex flex-col gap-2">
-                  <p>New to website ?</p>
+                  <p>Chưa có tài khoản ?</p>
                   <button
-                    className="inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg 
+                    className="inline-flex rounded-md w-full items-center justify-center bg-blue-custom px-6 py-4 text-lg 
                      text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide
                      "
                     onClick={() => router.push("/register")}
                   >
-                    Register
+                    Đăng kí
                   </button>
                 </div>
               </div>

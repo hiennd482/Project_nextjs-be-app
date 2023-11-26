@@ -30,6 +30,10 @@ export default function CommonDetails({ item, allPrd }) {
       setShowCartModal(true);
     }
   }
+
+  const lastPrice = item.price - item.price * (item.priceDrop / 100).toFixed(2);
+  console.log("lastPrice: " + lastPrice);
+
   const router = useRouter();
 
   return (
@@ -84,13 +88,12 @@ export default function CommonDetails({ item, allPrd }) {
                     item.onSale === "yes" ? "line-through" : ""
                   }`}
                 >
-                  {item && item.price}vnd
+                  {Intl.NumberFormat("vi-VN").format(item && item.price)}vnd
                 </h1>
                 {item.onSale === "yes" ? (
-                  <h1 className="text-xl font-bold text-[#22B24C]">{`${(
-                    item.price -
-                    item.price * (item.priceDrop / 100)
-                  ).toFixed(2)} vnd`}</h1>
+                  <h1 className="text-xl font-bold text-[#22B24C]">
+                    {Intl.NumberFormat("vi-VN").format(lastPrice)} vnd
+                  </h1>
                 ) : null}
               </div>
             </div>
@@ -101,12 +104,12 @@ export default function CommonDetails({ item, allPrd }) {
             >
               {componentLevelLoader && componentLevelLoader.loading ? (
                 <ComponentLevelLoader
-                  text={"Adding to Cart"}
+                  text={"Đang thêm"}
                   color={"#FFFFFF"}
                   loading={componentLevelLoader && componentLevelLoader.loading}
                 />
               ) : (
-                "Add to Cart"
+                "Thêm vào giỏ hàng"
               )}
             </button>
             <ul className="mt-8 space-y-2">
@@ -121,7 +124,7 @@ export default function CommonDetails({ item, allPrd }) {
           <div className="lg:col-span-3 flex flex-row items-start border-b-2 pb-4">
             <div className="mr-8">
               <a href="#" className=" text-sm font-medium text-gray-400">
-                DESCRIPTION
+                Mô tả:
               </a>
             </div>
             <div className="flex flex-row">
@@ -147,7 +150,9 @@ export default function CommonDetails({ item, allPrd }) {
                     <img src={prd.imageUrl} className="w-full" />
                     <div className="p-3">
                       <p className="text-xl">{prd.name}</p>
-                      <p className="pt-3 text-[#22B24C]">{prd.price}Đ</p>
+                      <p className="pt-3 text-[#22B24C]">
+                        {Intl.NumberFormat("vi-VN").format(prd.price)}Đ
+                      </p>
                       <p>{prd.category}</p>
                     </div>
                   </div>
