@@ -53,8 +53,8 @@ export default function Navbar() {
     isAuthUser,
     setIsAuthUser,
     setUser,
-    currentUpdatedProduct,
-    setCurrentUpdatedProduct,
+    currentUpdate,
+    setcurrentUpdate,
     showCartModal,
     setShowCartModal,
   } = useContext(GlobalContext);
@@ -62,14 +62,11 @@ export default function Navbar() {
   const pathName = usePathname();
   const router = useRouter();
 
-  console.log(currentUpdatedProduct, "navbar");
+  // console.log(currentUpdate, "navbar");
 
   useEffect(() => {
-    if (
-      pathName !== "/admin-view/add-product" &&
-      currentUpdatedProduct !== null
-    )
-      setCurrentUpdatedProduct(null);
+    if (pathName !== "/admin-view/add-product" && currentUpdate !== null)
+      setcurrentUpdate(null);
   }, [pathName]);
 
   function handleLogout() {
@@ -113,7 +110,9 @@ export default function Navbar() {
                 </button>
               </Fragment>
             ) : null}
-            {user?.role === "admin" ? (
+            {user?.role === "admin" ||
+            user?.role === "teacher" ||
+            user?.isAdmin === true ? (
               isAdminView ? (
                 <button
                   className={

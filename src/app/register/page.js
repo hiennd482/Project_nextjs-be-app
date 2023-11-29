@@ -15,7 +15,7 @@ const initialFormData = {
   name: "",
   email: "",
   password: "",
-  role: "customer",
+  role: "user",
 };
 
 export default function Register() {
@@ -46,22 +46,22 @@ export default function Register() {
     setPageLevelLoader(true);
     const data = await registerNewUser(formData);
 
-    if (data.success) {
-      toast.success(data.message, {
+    if (data?.success) {
+      toast.success(data?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setIsRegistered(true);
       setPageLevelLoader(false);
       setFormData(initialFormData);
     } else {
-      toast.error(data.message, {
+      toast.error(data?.message, {
         position: toast.POSITION.TOP_RIGHT,
       });
       setPageLevelLoader(false);
       setFormData(initialFormData);
     }
 
-    console.log(data);
+    console.log("day la register", data);
   }
 
   useEffect(() => {
@@ -93,18 +93,6 @@ export default function Register() {
                       <InputComponent
                         type={controlItem.type}
                         placeholder={controlItem.placeholder}
-                        label={controlItem.label}
-                        onChange={(event) => {
-                          setFormData({
-                            ...formData,
-                            [controlItem.id]: event.target.value,
-                          });
-                        }}
-                        value={formData[controlItem.id]}
-                      />
-                    ) : controlItem.componentType === "select" ? (
-                      <SelectComponent
-                        options={controlItem.options}
                         label={controlItem.label}
                         onChange={(event) => {
                           setFormData({

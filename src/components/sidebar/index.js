@@ -86,8 +86,9 @@ function Sidebar() {
                 <span class="flex-1 ml-3 whitespace-nowrap">Sản phẩm</span>
               </a>
             </li>
-            {/* <li>
+            <li>
               <a
+                onClick={() => router.push("/admin-view/users/")}
                 href="#"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
@@ -106,9 +107,9 @@ function Sidebar() {
                     d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"
                   />
                 </svg>
-                <span class="flex-1 ml-3 whitespace-nowrap">Sign In</span>
+                <span class="flex-1 ml-3 whitespace-nowrap">User</span>
               </a>
-            </li> */}
+            </li>
             <li>
               <a
                 onClick={() => router.push("/admin-view/orders")}

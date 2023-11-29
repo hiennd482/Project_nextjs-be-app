@@ -3,7 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
+import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -13,16 +13,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="light">
       <body className={inter.className}>
-        <GlobalState>
-          <Navbar />
-          <main className="flex min-h-screen flex-col mt-[80px]">
-            {children}
-          </main>
-          {/* <Footer></Footer> */}
-          {/* <footer>sdfsdf</footer> */}
-        </GlobalState>
+        <Providers>
+          <GlobalState>
+            <Navbar />
+            <main className="flex min-h-screen flex-col mt-[80px]">
+              {children}
+            </main>
+            {/* <Footer></Footer> */}
+            {/* <footer>sdfsdf</footer> */}
+          </GlobalState>
+        </Providers>
       </body>
     </html>
   );

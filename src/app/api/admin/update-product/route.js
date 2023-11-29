@@ -11,7 +11,11 @@ export async function PUT(req) {
 
     const isAuthUser = await AuthUser(req);
 
-    if (isAuthUser?.role === "admin") {
+    if (
+      isAuthUser?.role === "admin" ||
+      isAuthUser?.role === "teacher" ||
+      isAuthUser?.isAdmin == true
+    ) {
       const extractData = await req.json();
       const {
         _id,

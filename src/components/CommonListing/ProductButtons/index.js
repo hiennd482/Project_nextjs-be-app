@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 export default function ProductButton({ item }) {
   const pathName = usePathname();
   const {
-    setCurrentUpdatedProduct,
+    setcurrentUpdate,
     setComponentLevelLoader,
     componentLevelLoader,
     user,
@@ -19,7 +19,6 @@ export default function ProductButton({ item }) {
     setShowCartModal,
   } = useContext(GlobalContext);
   const router = useRouter();
-
   const isAdminView = pathName.includes("admin-view");
 
   async function handleDeleteProduct(item) {
@@ -78,7 +77,7 @@ export default function ProductButton({ item }) {
     <>
       <button
         onClick={() => {
-          setCurrentUpdatedProduct(item);
+          setcurrentUpdate(item);
           router.push("/admin-view/add-product");
         }}
         className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900"
@@ -104,7 +103,7 @@ export default function ProductButton({ item }) {
     </>
   ) : (
     <>
-      <button
+      {/* <button
         onClick={() => handleAddToCart(item)}
         className="mt-1.5 flex w-full justify-center bg-[#22B24C] px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
       >
@@ -119,7 +118,7 @@ export default function ProductButton({ item }) {
         ) : (
           "Thêm vào giỏ hàng"
         )}
-      </button>
+      </button> */}
     </>
   );
 }

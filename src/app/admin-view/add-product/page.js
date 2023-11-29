@@ -75,17 +75,17 @@ export default function AdminAddNewProduct() {
   const {
     componentLevelLoader,
     setComponentLevelLoader,
-    currentUpdatedProduct,
-    setCurrentUpdatedProduct,
+    currentUpdate,
+    setcurrentUpdate,
   } = useContext(GlobalContext);
 
-  console.log(currentUpdatedProduct);
+  console.log(currentUpdate);
 
   const router = useRouter();
 
   useEffect(() => {
-    if (currentUpdatedProduct !== null) setFormData(currentUpdatedProduct);
-  }, [currentUpdatedProduct]);
+    if (currentUpdate !== null) setFormData(currentUpdate);
+  }, [currentUpdate]);
 
   async function handleImage(event) {
     const extractImageUrl = await helperForUPloadingImageToFirebase(
@@ -119,7 +119,7 @@ export default function AdminAddNewProduct() {
   async function handleAddProduct() {
     setComponentLevelLoader({ loading: true, id: "" });
     const res =
-      currentUpdatedProduct !== null
+      currentUpdate !== null
         ? await updateAProduct(formData)
         : await addNewProduct(formData);
 
@@ -132,7 +132,7 @@ export default function AdminAddNewProduct() {
       });
 
       setFormData(initialFormData);
-      setCurrentUpdatedProduct(null);
+      setcurrentUpdate(null);
       setTimeout(() => {
         router.push("/admin-view/all-products");
       }, 1000);
@@ -176,7 +176,6 @@ export default function AdminAddNewProduct() {
             onChange={handleImage}
             className="text-black"
           />
-
           <img className="max-h-[20%] max-w-[20%] " id="thumb"></img>
           <div className="flex gap-2 flex-col">
             {/* <label>Available sizes</label> */}
@@ -221,14 +220,12 @@ export default function AdminAddNewProduct() {
             {componentLevelLoader && componentLevelLoader.loading ? (
               <ComponentLevelLoader
                 text={
-                  currentUpdatedProduct !== null
-                    ? "Updating Product"
-                    : "Adding Product"
+                  currentUpdate !== null ? "Updating Product" : "Adding Product"
                 }
                 color={"#ffffff"}
                 loading={componentLevelLoader && componentLevelLoader.loading}
               />
-            ) : currentUpdatedProduct !== null ? (
+            ) : currentUpdate !== null ? (
               "Update Product"
             ) : (
               "Add Product"

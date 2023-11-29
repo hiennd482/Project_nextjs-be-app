@@ -32,7 +32,7 @@ export default function GlobalState({ children }) {
   });
   const [isAuthUser, setIsAuthUser] = useState(null);
   const [user, setUser] = useState(null);
-  const [currentUpdatedProduct, setCurrentUpdatedProduct] = useState(null);
+  const [currentUpdate, setcurrentUpdate] = useState(null);
   const [showCartModal, setShowCartModal] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [addresses, setAddresses] = useState([]);
@@ -86,6 +86,8 @@ export default function GlobalState({ children }) {
       user &&
       Object.keys(user).length > 0 &&
       user?.role !== "admin" &&
+      user?.isAdmin !== true &&
+      user?.role !== "teacher" &&
       protectedAdminRoutes.indexOf(pathName) > -1
     )
       router.push("/unauthorized-page");
@@ -104,8 +106,8 @@ export default function GlobalState({ children }) {
         setUser,
         componentLevelLoader,
         setComponentLevelLoader,
-        currentUpdatedProduct,
-        setCurrentUpdatedProduct,
+        currentUpdate,
+        setcurrentUpdate,
         showCartModal,
         setShowCartModal,
         cartItems,

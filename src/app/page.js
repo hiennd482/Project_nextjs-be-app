@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import iconPath from "@/assets/index";
 import Footer from "@/components/Footer";
+import { Button } from "@nextui-org/react";
 export default function Home() {
   const { isAuthUser } = useContext(GlobalContext);
 
