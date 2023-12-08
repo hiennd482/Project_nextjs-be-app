@@ -8,6 +8,7 @@ export async function GET(res, req) {
     await connectToDB();
     const extractAllusers = await User.find({});
     if (extractAllusers) {
+      // const { password, ...others } = extractAllusers._doc;
       return NextResponse.json({
         success: true,
         data: extractAllusers,

@@ -7,6 +7,7 @@ import Notification from "@/components/Notification";
 import { GlobalContext } from "@/context";
 import { registerNewUser } from "@/services/register";
 import { registrationFormControls } from "@/utils";
+import { Input } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -102,7 +103,11 @@ export default function Register() {
                         }}
                         value={formData[controlItem.id]}
                       />
-                    ) : null
+                    ) : (
+                      <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                        <Input type="email" label="Email" />
+                      </div>
+                    )
                   )}
                   <button
                     className=" disabled:opacity-50 inline-flex w-full items-center justify-center bg-blue-custom rounded-md px-6 py-4 text-lg 

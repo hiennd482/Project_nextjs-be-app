@@ -114,7 +114,7 @@ const Pagin = () => {
       setPageLevelLoader(false);
       setAllOrdersForAllUsers(
         res.data && res.data.length
-          ? res.data.filter((item) => item.user._id !== user._id)
+          ? res.data.filter((item) => item.user?._id !== user._id)
           : []
       );
     } else {
@@ -177,22 +177,22 @@ const Pagin = () => {
   // console.log("check order", or);
   return (
     <div className="ml-5 mt-3">
-      {/* <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
+      {/* <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
         Thống kê
       </h1> */}
       <div className="grid grid-cols-3 justify-around gap-3">
         <a
           href="#"
-          class="block w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          className="block w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
         >
           <div className="">
-            <h5 class="mb-2 flex items-center gap-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="mb-2 flex items-center gap-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
               Đơn hàng <p className="font-normal text-xs">|trong tháng</p>
             </h5>
           </div>
           <div className="flex items-center gap-2">
             <svg
-              class="w-[28px] h-[28px] text-blue-500  rounded  dark:text-white"
+              className="w-[28px] h-[28px] text-blue-500  rounded  dark:text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -211,17 +211,17 @@ const Pagin = () => {
         </a>
         <a
           href="#"
-          class="block w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          className="block w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
         >
           <div className="">
-            <h5 class="mb-2 flex items-center gap-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="mb-2 flex items-center gap-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
               Doanh thu <p className="font-normal text-xs">|trong tháng</p>
             </h5>
           </div>
           {/* w-[28px] h-[28px] text-blue-500 */}
           <div className="flex items-center gap-2">
             <svg
-              class="w-[28px] h-[28px] text-green-500 dark:text-white"
+              className="w-[28px] h-[28px] text-green-500 dark:text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -240,24 +240,24 @@ const Pagin = () => {
         </a>
         <a
           href="#"
-          class="block w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          className="block w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
         >
           <div className="">
-            <h5 class="mb-2 flex items-center gap-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="mb-2 flex items-center gap-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
               Tổng số sản phẩm{" "}
               <p className="font-normal text-xs">|trong tháng</p>
             </h5>
           </div>
           <div className="flex items-center gap-2">
             <svg
-              class="w-[28px] h-[28px] text-blue-500  rounded  dark:text-white"
+              className="w-[28px] h-[28px] text-blue-500  rounded  dark:text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 18 20"
             >
               <svg
-                class="w-[28px] h-[28px] text-orange-800 dark:text-white"
+                className="w-[28px] h-[28px] text-orange-800 dark:text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -277,17 +277,17 @@ const Pagin = () => {
         </a>
         <a
           href="#"
-          class="block w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          className="block w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
         >
           <div className="">
-            <h5 class="mb-2 flex items-center gap-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="mb-2 flex items-center gap-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
               Đơn hàng đã vận chuyển{" "}
               <p className="font-normal text-xs">|trong tháng</p>
             </h5>
           </div>
           <div className="flex items-center gap-2">
             <svg
-              class="w-[28px] h-[28px] text-green-500 dark:text-white"
+              className="w-[28px] h-[28px] text-green-500 dark:text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -306,17 +306,17 @@ const Pagin = () => {
         </a>
         <a
           href="#"
-          class="block w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          className="block w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
         >
           <div className="">
-            <h5 class="mb-2 flex items-center gap-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="mb-2 flex items-center gap-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
               Đơn hàng chờ xử lý{" "}
               <p className="font-normal text-xs">|trong tháng</p>
             </h5>
           </div>
           <div className="flex items-center gap-2">
             <svg
-              class="w-[28px] h-[28px] text-red-500 dark:text-white"
+              className="w-[28px] h-[28px] text-red-500 dark:text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

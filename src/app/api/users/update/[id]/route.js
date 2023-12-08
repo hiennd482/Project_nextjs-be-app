@@ -4,50 +4,38 @@ import User from "@/models/user";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
-
-export async function DELETE(req) {
+export async function PUT(req, res, { params }) {
   try {
+    const { id } = params;
+    const { newName: name, newRole: role } = await req.json();
     await connectToDB();
     const isAuthUser = await AuthUser(req);
-    const { searchParams } = new URL(req.url);
-    const id = searchParams.get("id");
+
     if (
       isAuthUser?.role === "admin" ||
       isAuthUser?.role === "teacher" ||
       isAuthUser?.isAdmin === true
     ) {
-      if (!id)
-        return NextResponse.json(
-          {
-            success: false,
-            message: "User id is required",
-          },
-          {
-            status: 500,
-          }
-        );
-      if (
-        isAuthUser?.id !== id &&
-        isAuthUser?.role !== "admin" &&
-        isAuthUser?.isAdmin !== true
-      )
-        return NextResponse.json({
-          success: false,
-          message: "you cannot delete this user",
-        });
+      // const extracData = await req.json();
+      // const { _id, name, role } = extracData;
 
-      const deleteUser = await User.findByIdAndDelete(id);
-
-      if (deleteUser) {
+      const updateUser = await User.findByIdAndUpdate(
+        { _id: id },
+        { name, role },
+        {
+          new: true,
+        }
+      );
+      if (updateUser) {
         return NextResponse.json({
           success: true,
-          message: "User deleted successfully",
+          message: "User updated!",
         });
       } else {
         return NextResponse.json(
           {
             success: false,
-            message: "Failed to delete user",
+            message: "failed to update user!",
           },
           {
             status: 201,
@@ -57,8 +45,9 @@ export async function DELETE(req) {
     } else {
       return NextResponse.json(
         {
+          status: 401,
           success: false,
-          message: "Your are not authenticated",
+          message: "You are not authenticated",
         },
         {
           status: 401,
@@ -66,11 +55,12 @@ export async function DELETE(req) {
       );
     }
   } catch (error) {
-    console.log(error);
+    console.log(">>> api error: " + error);
     return NextResponse.json(
       {
+        status: 400,
         success: false,
-        message: "Something went wrong, please try again",
+        message: "Something went wrong! " + error,
       },
       {
         status: 400,

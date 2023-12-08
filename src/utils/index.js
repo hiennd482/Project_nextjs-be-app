@@ -85,12 +85,12 @@ export const registrationFormControls = [
     componentType: "select",
     options: [
       {
-        id: "admin",
-        label: "Admin",
+        id: "teacher",
+        label: "teacher",
       },
       {
-        id: "customer",
-        label: "customer",
+        id: "user",
+        label: "user",
       },
     ],
   },
@@ -188,22 +188,32 @@ export const adminAddProductformControls = [
     componentType: "input",
   },
 ];
-
-export const AvailableSizes = [
+export const updateUserformControls = [
   {
-    id: "s",
-    label: "S",
+    id: "name",
+    type: "text",
+    placeholder: "nhap ho va ten nguoi dung",
+    label: "Ho va ten",
+    componentType: "input",
   },
   {
-    id: "m",
-    label: "M",
-  },
-  {
-    id: "l",
-    label: "L",
+    id: "role",
+    type: "",
+    placeholder: "",
+    label: "Role",
+    componentType: "select",
+    options: [
+      {
+        id: "teacher",
+        label: "teacher",
+      },
+      {
+        id: "user",
+        label: "user",
+      },
+    ],
   },
 ];
-
 export const firebaseConfig = {
   apiKey: "AIzaSyAPmUNlivEkUTlyXK2-P5Oys3eE6cjUF-c",
   authDomain: "nextjs-projectxoay-85d8f.firebaseapp.com",

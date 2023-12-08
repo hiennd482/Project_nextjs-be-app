@@ -11,6 +11,7 @@ const Objectimg = {
   sectionaboutus: require("./sectionaboutus.png"),
   foodaboutus: require("./foodaboutus.svg"),
   quality: require("./qualityaboutus.svg"),
+  edit: require("./icons/edit.svg"),
 };
 
 export default Objectimg;

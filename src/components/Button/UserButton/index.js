@@ -6,13 +6,18 @@ import { toast } from "react-toastify";
 import { deleteUser } from "@/services/users";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState, useContext, useEffect } from "react";
+import ImgPath from "@/assets/index";
+import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 // import { deleteUser } from "@/services/users";
 import { mutate } from "swr";
+import { Button } from "@nextui-org/react";
+import Image from "next/image";
 const UserButton = ({ item }) => {
   const pathName = usePathname();
 
   const {
-    setcurrentUpdate,
+    currentUpdate,
+    setcurrentUpdateUser,
     setComponentLevelLoader,
     componentLevelLoader,
     user,
@@ -45,7 +50,8 @@ const UserButton = ({ item }) => {
         setComponentLevelLoader({ loading: false, id: "" });
       }
     } else {
-      console.log("caclles");
+      // console.log("caclles");
+      setComponentLevelLoader({ loading: false, id: "" });
     }
     // if (check == true) {
     //   setComponentLevelLoader({ loading: true, id: item._id });
@@ -73,20 +79,36 @@ const UserButton = ({ item }) => {
     setComponentLevelLoader();
   }, []);
   return isAdminView ? (
-    <>
-      <button
+    <div className="flex gap-5">
+      <Button
+        isIconOnly
+        color="warning"
+        onClick={() => {
+          setcurrentUpdateUser(item);
+          router.push("/admin-view/users/add-user");
+          // console.log("pass item", currentUpdate);
+        }}
+        className="text-white"
+        // className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900"
+      >
+        <FaEdit></FaEdit>
+      </Button>
+
+      {/* <button
         onClick={() => {
           setcurrentUpdate(item);
-          console.log(">> chua sang trang add user", item._id);
+          router.push("/admin-view/users/add-user");
+          // console.log("pass item", currentUpdate);
         }}
-        className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900"
       >
-        cap nhat
-      </button>
-
-      <button
+        suar
+      </button> */}
+      <Button
+        isIconOnly
+        color="danger"
         onClick={() => handleDeleteUser(item)}
-        className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+        className="text-white"
+        // className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
       >
         {componentLevelLoader &&
         componentLevelLoader.loading &&
@@ -97,10 +119,10 @@ const UserButton = ({ item }) => {
             loading={componentLevelLoader && componentLevelLoader.loading}
           />
         ) : (
-          "Xóa"
+          <FaRegTrashAlt></FaRegTrashAlt>
         )}
-      </button>
-    </>
+      </Button>
+    </div>
   ) : (
     <>null</>
   );

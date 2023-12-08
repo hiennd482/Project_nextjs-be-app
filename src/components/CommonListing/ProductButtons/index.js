@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 export default function ProductButton({ item }) {
   const pathName = usePathname();
   const {
+    currentUpdate,
     setcurrentUpdate,
     setComponentLevelLoader,
     componentLevelLoader,
@@ -78,6 +79,8 @@ export default function ProductButton({ item }) {
       <button
         onClick={() => {
           setcurrentUpdate(item);
+          // console.log("pass item product", currentUpdate);
+
           router.push("/admin-view/add-product");
         }}
         className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900"
