@@ -82,6 +82,7 @@ export default function AddNewUser() {
 
   useEffect(() => {
     if (currentUpdateUser !== null) setFormData(currentUpdateUser);
+    const input = document.getElementById("upload-img");
   }, [currentUpdateUser]);
 
   async function handleImage(event) {
@@ -139,22 +140,15 @@ export default function AddNewUser() {
       setFormData(initialFormData);
     }
   }
-  const input = document.getElementById("upload-img");
-  // input.addEventListener(
-  //   ("change",
-  //   (e) => {
-  //     const file = e.target.files[0];
-  //     const url = URL.createObjectURL(file);
-  //     document.querySelector("img").src = url;
-  //   })
-
-  // );
-  if (input) {
-    input.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      const url = URL.createObjectURL(file);
-      document.querySelector("#thumb").src = url;
-    });
+  if (typeof document !== "undefined") {
+    const input = document.getElementById("upload-img");
+    if (input) {
+      input.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        const url = URL.createObjectURL(file);
+        document.querySelector("#thumb").src = url;
+      });
+    }
   }
 
   // console.log(formData);

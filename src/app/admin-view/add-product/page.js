@@ -85,6 +85,7 @@ export default function AdminAddNewProduct() {
 
   useEffect(() => {
     if (currentUpdate !== null) setFormData(currentUpdate);
+    const input = document.getElementById("upload-img");
   }, [currentUpdate]);
 
   async function handleImage(event) {
@@ -149,7 +150,16 @@ export default function AdminAddNewProduct() {
       setFormData(initialFormData);
     }
   }
-  const input = document.getElementById("upload-img");
+  if (typeof document !== "undefined") {
+    const input = document.getElementById("upload-img");
+    if (input) {
+      input.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        const url = URL.createObjectURL(file);
+        document.querySelector("#thumb").src = url;
+      });
+    }
+  }
   // input.addEventListener(
   //   ("change",
   //   (e) => {
@@ -159,13 +169,6 @@ export default function AdminAddNewProduct() {
   //   })
 
   // );
-  if (input) {
-    input.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      const url = URL.createObjectURL(file);
-      document.querySelector("#thumb").src = url;
-    });
-  }
 
   // console.log(formData);
 

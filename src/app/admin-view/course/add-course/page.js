@@ -97,6 +97,7 @@ export default function AddNewUser() {
   useEffect(() => {
     getTeachers();
     if (currentUpdateCourse !== null) setFormData(currentUpdateCourse);
+    const input = document.getElementById("upload-img");
   }, [currentUpdateCourse]);
 
   async function handleImage(event) {
@@ -153,7 +154,16 @@ export default function AddNewUser() {
       setFormData(initialFormData);
     }
   }
-  const input = document.getElementById("upload-img");
+  if (typeof document !== "undefined") {
+    const input = document.getElementById("upload-img");
+    if (input) {
+      input.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        const url = URL.createObjectURL(file);
+        document.querySelector("#thumb").src = url;
+      });
+    }
+  }
   // input.addEventListener(
   //   ("change",
   //   (e) => {
@@ -163,13 +173,6 @@ export default function AddNewUser() {
   //   })
 
   // );
-  if (input) {
-    input.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      const url = URL.createObjectURL(file);
-      document.querySelector("#thumb").src = url;
-    });
-  }
 
   // console.log(formData);
 
