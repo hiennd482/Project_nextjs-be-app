@@ -30,41 +30,40 @@ import { resolve } from "styled-jsx/css";
 
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app, firebaseStroageURL);
+const createUniqueFileName = (getFile) => {
+  const timeStamp = Date.now();
+  const randomStringValue = Math.random().toString(36).substring(2, 12);
 
-// const createUniqueFileName = (getFile) => {
-//   const timeStamp = Date.now();
-//   const randomStringValue = Math.random().toString(36).substring(2, 12);
+  return `${getFile.name}-${timeStamp}-${randomStringValue}`;
+};
+async function helperForUPloadingImageToFirebase(file) {
+  const getFileName = createUniqueFileName(file);
+  const storageReference = ref(storage, `user/${getFileName}`);
+  const uploadImage = uploadBytesResumable(storageReference, file);
 
-//   return `${getFile.name}-${timeStamp}-${randomStringValue}`;
-// };
-
-// async function helperForUPloadingImageToFirebase(file) {
-//   const getFileName = createUniqueFileName(file);
-//   const storageReference = ref(storage, `ecommerce/${getFileName}`);
-//   const uploadImage = uploadBytesResumable(storageReference, file);
-
-//   return new Promise((resolve, reject) => {
-//     uploadImage.on(
-//       "state_changed",
-//       (snapshot) => {},
-//       (error) => {
-//         console.log(error);
-//         reject(error);
-//       },
-//       () => {
-//         getDownloadURL(uploadImage.snapshot.ref)
-//           .then((downloadUrl) => resolve(downloadUrl))
-//           .catch((error) => reject(error));
-//       }
-//     );
-//   });
-// }
+  return new Promise((resolve, reject) => {
+    uploadImage.on(
+      "state_changed",
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
+        reject(error);
+      },
+      () => {
+        getDownloadURL(uploadImage.snapshot.ref)
+          .then((downloadUrl) => resolve(downloadUrl))
+          .catch((error) => reject(error));
+      }
+    );
+  });
+}
 
 const initialFormData = {
   name: "",
   email: "",
   password: "",
   role: "teacher",
+  photo: "",
 };
 
 export default function AddNewUser() {
@@ -85,24 +84,31 @@ export default function AddNewUser() {
     if (currentUpdateUser !== null) setFormData(currentUpdateUser);
   }, [currentUpdateUser]);
 
-  // async function handleImage(event) {
-  //   const extractImageUrl = await helperForUPloadingImageToFirebase(
-  //     event.target.files[0]
-  //   );
+  async function handleImage(event) {
+    const extractImageUrl = await helperForUPloadingImageToFirebase(
+      event.target.files[0]
+    );
 
-  //   if (extractImageUrl !== "") {
-  //     setFormData({
-  //       ...formData,
-  //       imageUrl: extractImageUrl,
-  //     });
-  //   }
-  // }
+    if (extractImageUrl !== "") {
+      setFormData({
+        ...formData,
+        photo: extractImageUrl,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        photo: extractImageUrl,
+      });
+    }
+  }
 
   async function handleAddUser() {
     setComponentLevelLoader({ loading: true, id: "" });
     const res =
       currentUpdateUser !== null
-        ? await updateAUser(formData)
+        ? // ? console.log("update", formData)
+          // : console.log("add", formData);
+          await updateAUser(formData)
         : await registerNewUser(formData);
 
     // if (currentUpdateUser === null) {
@@ -133,7 +139,7 @@ export default function AddNewUser() {
       setFormData(initialFormData);
     }
   }
-  // const input = document.getElementById("upload-img");
+  const input = document.getElementById("upload-img");
   // input.addEventListener(
   //   ("change",
   //   (e) => {
@@ -143,13 +149,13 @@ export default function AddNewUser() {
   //   })
 
   // );
-  // if (input) {
-  //   input.addEventListener("change", (e) => {
-  //     const file = e.target.files[0];
-  //     const url = URL.createObjectURL(file);
-  //     document.querySelector("#thumb").src = url;
-  //   });
-  // }
+  if (input) {
+    input.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      const url = URL.createObjectURL(file);
+      document.querySelector("#thumb").src = url;
+    });
+  }
 
   // console.log(formData);
 
@@ -157,15 +163,6 @@ export default function AddNewUser() {
     <div className="w-full mt-5 mr-0 mb-0 ml-0 relative">
       <div className="flex flex-col items-start justify-start p-10 bg-white shadow-2xl rounded-xl relative">
         <div className="w-full mt-6 mr-0 mb-0 ml-0 space-y-8">
-          <img className="max-h-[20%] max-w-[20%] " id="thumb"></img>
-          <div className="flex gap-2 flex-col">
-            {/* <label>Available sizes</label> */}
-            {/* <TileComponent
-              selected={formData.sizes}
-              onClick={handleTileClick}
-              data={AvailableSizes}
-            /> */}
-          </div>
           {currentUpdateUser == null ? (
             <>
               {registrationFormControls.map((controlItem) =>
@@ -199,6 +196,20 @@ export default function AddNewUser() {
             </>
           ) : (
             <>
+              <img
+                className="max-h-[50%] max-w-[10%]  rounded-full"
+                id="thumb"
+              ></img>
+              <div className="flex gap-2 flex-col">
+                <input
+                  id="upload-img"
+                  // accept="image/*"
+                  max="1000000"
+                  type="file"
+                  onChange={handleImage}
+                  className="text-black"
+                />
+              </div>
               {updateUserformControls.map((controlItem) =>
                 controlItem.componentType === "input" ? (
                   <InputComponent

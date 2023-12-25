@@ -2,7 +2,16 @@
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import React from "react";
-import { FaChartPie, FaUsers, FaShopify, FaReceipt } from "react-icons/fa";
+import {
+  FaChartPie,
+  FaUsers,
+  FaShopify,
+  FaReceipt,
+  FaListAlt,
+  FaUserGraduate,
+} from "react-icons/fa";
+
+import { AiFillSetting } from "react-icons/ai";
 function Sidebar() {
   const router = useRouter();
   const pathname = usePathname();
@@ -18,7 +27,7 @@ function Sidebar() {
             <li className="">
               <Link
                 href="/admin-view"
-                className={`flex items-center gap-3 cursor-pointer p-2 text-gray-900 rounded-lg dark:text-white hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+                className={`flex items-center gap-3 cursor-pointer p-2 text-gray-900 rounded-lg dark:text-white hover:text-purple-500 hover:bg-gray-100 dark:hover:bg-gray-700 group ${
                   pathname === "/admin-view"
                     ? "bg-gray-200 text-black"
                     : "bg-white text-black"
@@ -28,10 +37,10 @@ function Sidebar() {
                 Dashboard
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 href="/admin-view/all-products"
-                className={`flex items-center gap-3 cursor-pointer p-2 text-gray-900 rounded-lg dark:text-white hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+                className={`flex items-center gap-3 cursor-pointer p-2 text-gray-900 rounded-lg dark:text-white hover:text-purple-500 hover:bg-gray-100 dark:hover:bg-gray-700 group ${
                   pathname === "/admin-view/all-products"
                     ? "bg-gray-200 text-black"
                     : "bg-white text-black"
@@ -40,12 +49,25 @@ function Sidebar() {
                 <FaShopify />
                 San pham
               </Link>
+            </li> */}
+            <li>
+              <Link
+                href="/admin-view/course"
+                className={`flex items-center gap-3 cursor-pointer p-2 text-gray-900 rounded-lg dark:text-white hover:text-purple-500 hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+                  pathname.includes("/course")
+                    ? "bg-gray-200 text-black"
+                    : "bg-white text-black"
+                }`}
+              >
+                <FaListAlt />
+                dayla cou se
+              </Link>
             </li>
             <li>
               <Link
                 href="/admin-view/users"
-                className={`flex items-center gap-3 cursor-pointer p-2 text-gray-900 rounded-lg dark:text-white hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 group ${
-                  pathname === "/admin-view/users"
+                className={`flex items-center gap-3 cursor-pointer p-2 text-gray-900 rounded-lg dark:text-white hover:text-purple-500 hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+                  pathname.includes("/users")
                     ? "bg-gray-200 text-black"
                     : "bg-white text-black"
                 }`}
@@ -56,15 +78,28 @@ function Sidebar() {
             </li>
             <li>
               <Link
-                href="/admin-view/orders"
-                className={`flex items-center gap-3 cursor-pointer p-2 text-gray-900 rounded-lg dark:text-white hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 group ${
-                  pathname === "/admin-view/orders"
+                href="/admin-view/students"
+                className={`flex items-center gap-3 cursor-pointer p-2 text-gray-900 rounded-lg dark:text-white hover:text-purple-500 hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+                  pathname.includes("/students")
                     ? "bg-gray-200 text-black"
                     : "bg-white text-black"
                 }`}
               >
-                <FaReceipt />
-                orders
+                <FaUserGraduate />
+                collage
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/admin-view/students"
+                className={`flex items-center gap-3 cursor-pointer p-2 text-gray-900 rounded-lg dark:text-white hover:text-purple-500 hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+                  pathname.includes("/students")
+                    ? "bg-gray-200 text-black"
+                    : "bg-white text-black"
+                }`}
+              >
+                <AiFillSetting />
+                Cài đặt
               </Link>
             </li>
           </ul>

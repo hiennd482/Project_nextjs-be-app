@@ -4,86 +4,8 @@ import "./pagin.css";
 import { GlobalContext } from "@/context";
 import { getAllOrdersForAllUsers } from "@/services/order";
 import { getAllAdminProducts } from "@/services/product";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler,
-  ArcElement,
-} from "chart.js";
 import { Bar, Pie, Line } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Filler
-);
-export const dataPie = {
-  labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-  datasets: [
-    {
-      label: "# of Votes",
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.2)",
-        "rgba(54, 162, 235, 0.2)",
-        "rgba(255, 206, 86, 0.2)",
-        "rgba(75, 192, 192, 0.2)",
-        "rgba(153, 102, 255, 0.2)",
-        "rgba(255, 159, 64, 0.2)",
-      ],
-      borderColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)",
-        "rgba(75, 192, 192, 1)",
-        "rgba(153, 102, 255, 1)",
-        "rgba(255, 159, 64, 1)",
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Biểu đồ doanh thu",
-    },
-  },
-};
-export const optionsArea = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Đơn hàng",
-    },
-  },
-};
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
 const Pagin = () => {
   const {
@@ -130,40 +52,6 @@ const Pagin = () => {
   allOrdersForAllUsers.forEach((i) => {
     totalAmout += i?.totalPrice;
   });
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: "Dataset 1",
-        data: labels.map(() => faker.number.int({ min: 10, max: 100 })),
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-      },
-      {
-        label: "Dataset 2",
-        data: labels.map(() => faker.number.int({ min: 10, max: 100 })),
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
-      },
-    ],
-  };
-  const dataArea = {
-    labels,
-    datasets: [
-      {
-        fill: true,
-        label: "Dataset 2",
-        data: labels.map(() => faker.number.int({ min: 10, max: 100 })),
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
-      },
-      // {
-      //   fill: true,
-      //   label: "Dataset 3",
-      //   data: labels.map(() => [10, 20, 30, 4, 5, 6, 7]),
-      //   borderColor: "rgb(53, 162, 235)",
-      //   backgroundColor: "rgba(53, 162, 235, 0.5)",
-      // },
-    ],
-  };
   // console.log(" sum", totalAmout);
   // console.log("first", allOrdersForAllUsers.length);
   let orderShipped = 0;
@@ -334,16 +222,6 @@ const Pagin = () => {
           </div>
         </a>
       </div>
-      {/* chart */}
-      {/* <div className="w-[40%] h-[50%] flex gap-3 justify-between">
-        <Bar options={options} data={data} />
-        <div className="w-[70%] h-[70%] pl-[100px]">
-          <Pie data={dataPie} />
-        </div>
-      </div>
-      <div className="w-[40%] h-[50%] flex gap-3 ">
-        <Line options={optionsArea} data={dataArea} />
-      </div> */}
     </div>
   );
 };

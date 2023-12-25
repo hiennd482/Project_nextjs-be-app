@@ -1,0 +1,17 @@
+:root {
+  --speed: 300ms;
+}
+
+.act {
+  display: block;
+  /* // opacity: 1;
+    // visibility: visible;
+    // // transform: scale(0);
+    // transition: var(--speed) ease; c */
+}
+.inact {
+  display: hidden;
+  /* //   visibility: hidden;
+    // // transform: scale(1);
+    // transition: var(--speed) ease; */
+}

@@ -95,7 +95,68 @@ export const registrationFormControls = [
     ],
   },
 ];
-
+export const courseFormControls = [
+  {
+    id: "name",
+    type: "text",
+    placeholder: "Nhập tên khóa học",
+    label: "Tên khóa học",
+    componentType: "input",
+  },
+  {
+    id: "about_course",
+    type: "text",
+    placeholder: "Nhập mô tả",
+    label: "Mô tả khóa học",
+    componentType: "input",
+  },
+  {
+    id: "about_intro",
+    type: "text",
+    placeholder: "Nhập giới thiệu ",
+    label: "Giới thiệu khóa học",
+    componentType: "input",
+  },
+  {
+    id: "teacher_id",
+    type: "",
+    placeholder: "",
+    label: "Giáo viên",
+    componentType: "select",
+    options: [
+      {
+        id: "11",
+        label: "duy hien",
+      },
+      {
+        id: "222",
+        label: "nguyen van duy",
+      },
+    ],
+  },
+];
+export const fileFormControls = [
+  {
+    id: "name",
+    label: "Ten bai hoc",
+    type: "text",
+    placeholder: "Nhap ten bai hoc",
+    componentType: "input",
+  },
+  {
+    id: `lesson_url`,
+    label: "Link video",
+    type: "text",
+    placeholder: "Gan link bai hoc",
+    componentType: "input",
+  },
+  // {
+  //   id: `lesson_file`,
+  //   type: "file",
+  //   placeholder: "Gan link bai hoc",
+  //   componentType: "input",
+  // },
+];
 export const loginFormControls = [
   {
     id: "email",

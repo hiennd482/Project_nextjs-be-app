@@ -25,7 +25,7 @@ export async function PUT(req) {
       const course = await Course.findById(id);
       const formData = {
         $set: extracData,
-        total_student: course.student_id.length,
+        // total_student: course.student_id.length,
       };
       console.log("first", course.student_id.length);
       await course.updateOne(formData, { new: true });

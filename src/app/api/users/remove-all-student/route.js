@@ -16,21 +16,25 @@ export async function DELETE(req) {
       isAuthUser?.isAdmin === true
     ) {
       if (studentID) {
-        await Course.findOne({ student_id: studentID });
+        const courseId = await Course.findOne({ student_id: studentID });
+        const totalCourse = courseId._doc.student_id?.length;
         await Course.updateMany(
           { student_id: studentID },
-          { $pull: { student_id: studentID } }
+          {
+            $pull: { student_id: studentID },
+            $set: { total_student: totalCourse - 1 },
+          }
         );
         const userID = await User.findById(studentID);
         await userID.updateOne({ $set: { student_of: [] } });
         return NextResponse.json({
           success: true,
-          message: "Removed all successfully ",
+          message: "Removed all successfully",
         });
       } else {
         return NextResponse.json({
           success: false,
-          message: "There was an error",
+          message: "Missing id student",
         });
       }
     } else {

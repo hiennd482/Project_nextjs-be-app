@@ -15,7 +15,7 @@ export async function PUT(req, res) {
       isAuthUser?.isAdmin === true
     ) {
       const extracData = await req.json();
-      const { _id, name, role } = extracData;
+      const { _id, name, role, photo } = extracData;
 
       const updateUser = await User.findByIdAndUpdate(
         {
@@ -24,6 +24,7 @@ export async function PUT(req, res) {
         {
           name,
           role,
+          photo,
         },
         {
           new: true,

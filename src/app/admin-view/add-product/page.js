@@ -97,6 +97,11 @@ export default function AdminAddNewProduct() {
         ...formData,
         imageUrl: extractImageUrl,
       });
+    } else {
+      setFormData({
+        ...formData,
+        imageUrl: extractImageUrl,
+      });
     }
   }
 

@@ -14,7 +14,7 @@ export async function GET(req) {
     if (isAuhtUser) {
       const getData = await User.find({ _id: isAuhtUser?.id });
       if (getData && getData.length) {
-        const { password, ...others } = getData[0]._doc;
+        const { password, teacher_of, student_of, ...others } = getData[0]._doc;
         return NextResponse.json({
           succes: true,
           data: { ...others },

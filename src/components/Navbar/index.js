@@ -65,6 +65,7 @@ export default function Navbar() {
   // console.log(currentUpdate, "navbar");
 
   useEffect(() => {
+    console.log("user", user);
     if (pathName !== "/admin-view/add-product" && currentUpdate !== null)
       setcurrentUpdate(null);
   }, [pathName]);

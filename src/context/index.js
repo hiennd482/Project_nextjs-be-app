@@ -18,9 +18,17 @@ export const initialCheckoutFormData = {
 const protectedRoutes = ["cart", "checkout", "account", "orders", "admin-view"];
 
 const protectedAdminRoutes = [
-  "/admin-view",
+  "/admin-view/",
   "/admin-view/add-product",
   "/admin-view/all-products",
+  "/admin-view/course",
+  "/admin-view/course/add-course",
+  "/admin-view/course/lesson",
+  "/admin-view/course/lesson/file-lesson",
+  "/admin-view/student",
+  "/admin-view/student/attach-student",
+  "/admin-view/users",
+  "/admin-view/users/add-user",
 ];
 
 export default function GlobalState({ children }) {
@@ -34,6 +42,7 @@ export default function GlobalState({ children }) {
   const [user, setUser] = useState(null);
   const [currentUpdate, setcurrentUpdate] = useState(null);
   const [currentUpdateUser, setcurrentUpdateUser] = useState(null);
+  const [currentUpdateCourse, setCurrentUpdateCourse] = useState(null);
   const [showCartModal, setShowCartModal] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [addresses, setAddresses] = useState([]);
@@ -127,6 +136,8 @@ export default function GlobalState({ children }) {
         setAllOrdersForAllUsers,
         setcurrentUpdateUser,
         currentUpdateUser,
+        setCurrentUpdateCourse,
+        currentUpdateCourse,
       }}
     >
       {children}

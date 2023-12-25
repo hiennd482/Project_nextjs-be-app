@@ -53,27 +53,6 @@ const UserButton = ({ item }) => {
       // console.log("caclles");
       setComponentLevelLoader({ loading: false, id: "" });
     }
-    // if (check == true) {
-    //   setComponentLevelLoader({ loading: true, id: item._id });
-    //   await deleteAProduct(item._id);
-    // } else {
-    //   // setComponentLevelLoader({ loading: false, id: item._id });
-    //   console.log("huy delate");
-    // }
-    // if (check == true) {
-    //   if (res.success) {
-    //     setComponentLevelLoader({ loading: false, id: "" });
-    //     toast.success(res.message, {
-    //       position: toast.POSITION.TOP_RIGHT,
-    //     });
-    //     router.refresh();
-    //   }
-    // } else {
-    //   toast.error(res.message, {
-    //     position: toast.POSITION.TOP_RIGHT,
-    //   });
-    //   setComponentLevelLoader({ loading: false, id: "" });
-    // }
   }
   useEffect(() => {
     setComponentLevelLoader();

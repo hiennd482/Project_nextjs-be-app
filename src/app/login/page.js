@@ -54,7 +54,7 @@ export default function Login() {
       setIsAuthUser(true);
       setUser(res?.finalData?.user);
       setFormData(initialFormdata);
-      Cookies.set("token", res?.finalData?.token);
+      Cookies.set("token", res?.finalData?.access_token);
       localStorage.setItem("user", JSON.stringify(res?.finalData?.user));
       setComponentLevelLoader({ loading: false, id: "" });
     } else {

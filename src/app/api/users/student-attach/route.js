@@ -22,18 +22,39 @@ export async function POST(req) {
         });
       }
       const extracData = await req.json();
-      const checkUser = await User.findById(studentId);
-      await checkUser.updateOne({ $push: extracData });
+
       if (extracData.student_of) {
-        const courseId = Course.findOne({ _id: extracData.student_of });
-        await courseId.updateMany({
-          $push: { student_id: checkUser._id },
+        const isStudentExist = await Course.findOne({
+          _id: extracData.student_of,
+          student_id: studentId,
         });
-        // console.log("check loeng", courseId);
-        return NextResponse.json({
-          success: true,
-          message: "attachments successfully",
-        });
+        // const isStudentExist = await Course.findOne({ student_id: studentId });
+        if (isStudentExist) {
+          return NextResponse.json(
+            {
+              success: false,
+              message: "student already exists!",
+            },
+            {
+              status: 201,
+            }
+          );
+        } else {
+          const checkUser = await User.findById(studentId);
+          await checkUser.updateOne({ $push: extracData });
+          const courseId = await Course.findById(extracData.student_of);
+          console.log("day la student", courseId._doc.student_id?.length);
+          const totalCourse = courseId._doc.student_id?.length;
+          await courseId.updateOne({
+            $push: { student_id: checkUser._id },
+            $set: { total_student: totalCourse + 1 },
+          });
+          // console.log("check loeng", courseId);
+          return NextResponse.json({
+            success: true,
+            message: "attachments successfully",
+          });
+        }
       } else {
         return NextResponse.json(
           {

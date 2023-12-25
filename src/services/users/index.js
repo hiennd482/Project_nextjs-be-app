@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 //  add new user = register
 export const getAllUsers = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/users/all-users", {
+    const res = await fetch("/api/users/all-users", {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -50,17 +50,97 @@ export const updateAUser = async (formData) => {
 };
 export const searchUsers = async (name) => {
   try {
-    const res = await fetch(
-      `http://localhost:3000/api/users/search-user?name=${name}`,
-      {
-        method: "GET",
-        cache: "no-store",
-      }
-    );
+    const res = await fetch(`/api/users/search-user?name=${name}`, {
+      method: "GET",
+      cache: "no-store",
+    });
     const data = await res.json();
 
     return data;
   } catch (error) {
     console.log(">>>service error search", error);
+  }
+};
+export const allTeachers = async () => {
+  try {
+    const res = await fetch(`/api/users/all-teacher`, {
+      method: "GET",
+      cache: "no-store",
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const allStudents = async () => {
+  try {
+    const res = await fetch("/api/users/students", {
+      method: "GET",
+      cache: "no-store",
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getAStudent = async (id) => {
+  try {
+    const res = await fetch(`/api/users/student-by-id?id=${id}`, {
+      method: "GET",
+      cache: "no-store",
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const attachStudent = async (id, formBody) => {
+  try {
+    const res = await fetch(`/api/users/student-attach?id=${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${Cookies.get("token")}`,
+      },
+      body: JSON.stringify(formBody),
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const disattachStudent = async (id, course_id) => {
+  try {
+    const res = await fetch(
+      `/api/users/remove-student?id=${id}&course_id=${course_id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+        },
+      }
+    );
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const disattachALL = async (id) => {
+  try {
+    const res = await fetch(`/api/users/remove-all-student?id=${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+      },
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
   }
 };

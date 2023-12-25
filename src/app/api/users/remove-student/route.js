@@ -17,18 +17,6 @@ export async function DELETE(req) {
       isAuthUser?.role === "teacher" ||
       isAuthUser?.isAdmin === true
     ) {
-      if (studentID) {
-        await Course.findOne({ _id: courseID });
-        await Course.updateOne(
-          { student_id: studentID },
-          { $pull: { student_id: studentID } }
-        );
-      } else {
-        return NextResponse.json({
-          success: false,
-          message: "Student not found",
-        });
-      }
       if (courseID) {
         await User.findOne({ student_of: courseID });
         await User.updateOne(
@@ -41,10 +29,25 @@ export async function DELETE(req) {
           message: "Course not found",
         });
       }
-      return NextResponse.json({
-        succes: true,
-        message: "remove successfully!",
-      });
+      if (studentID) {
+        const courseId = await Course.findOne({ student_id: studentID });
+        // console.log("day la student", courseId);
+        const totalCourse = courseId._doc.student_id?.length;
+        // console.log("total course", totalCourse);
+        await courseId.updateOne({
+          $pull: { student_id: studentID },
+          $set: { total_student: totalCourse > 0 ? totalCourse - 1 : 0 },
+        });
+        return NextResponse.json({
+          success: true,
+          message: "remove successfully!",
+        });
+      } else {
+        return NextResponse.json({
+          success: false,
+          message: "Student not found",
+        });
+      }
     } else {
       return NextResponse.json({
         success: false,

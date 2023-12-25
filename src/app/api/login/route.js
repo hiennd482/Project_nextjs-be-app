@@ -43,23 +43,38 @@ export async function POST(req) {
       });
     }
 
-    const token = jwt.sign(
+    const access_token = jwt.sign(
       {
         id: checkUser._id,
         email: checkUser?.email,
         role: checkUser?.role,
+        course: checkUser?.student_of,
+        isAdmin: checkUser?.isAdmin,
+      },
+      "default_secret_key",
+      { expiresIn: "1d" }
+    );
+    const refresh_token = jwt.sign(
+      {
+        id: checkUser._id,
+        email: checkUser?.email,
+        role: checkUser?.role,
+        course: checkUser?.student_of,
       },
       "default_secret_key",
       { expiresIn: "1d" }
     );
 
     const finalData = {
-      token,
+      access_token,
+      refresh_token,
+
       user: {
         email: checkUser.email,
         name: checkUser.name,
         _id: checkUser._id,
         role: checkUser.role,
+        isAdmin: checkUser.isAdmin,
       },
     };
 
