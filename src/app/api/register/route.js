@@ -41,7 +41,7 @@ export async function POST(req) {
           message: "User is already exists. Please try with different email.",
         },
         {
-          status: 201,
+          status: 500,
         }
       );
     } else {
