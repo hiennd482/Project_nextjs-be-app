@@ -2,23 +2,31 @@ import connectToDB from "@/database";
 import User from "@/models/user";
 import { compare } from "bcryptjs";
 import Joi from "joi";
+import AuthUser from "@/middleware/AuthUser";
 import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
 const schema = Joi.object({
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
+  refresh_token: Joi.string().required(),
 });
-
 export const dynamic = "force-dynamic";
-
 export async function POST(req) {
   await connectToDB();
+  const { refresh_token } = await req.json();
+  const { error } = schema.validate({ refresh_token });
+  const TokenUser = async () => {
+    const token = refresh_token;
 
-  const { email, password } = await req.json();
+    if (!token) return false;
 
-  const { error } = schema.validate({ email, password });
-
+    try {
+      const extractAuthUserInfo = jwt.verify(token, "default_secret_key");
+      if (extractAuthUserInfo) return extractAuthUserInfo;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  };
   if (error) {
     return NextResponse.json(
       {
@@ -30,28 +38,19 @@ export async function POST(req) {
   }
 
   try {
-    const checkUser = await User.findOne({ email });
+    const token = await TokenUser();
+    const checkUser = await User.findOne({ _id: token.id });
     if (!checkUser) {
       return NextResponse.json(
         {
           success: false,
-          message: "Account not found with this email",
+          message: "invalid token!",
         },
-        { status: 400 }
-      );
-    }
-
-    const checkPassword = await compare(password, checkUser.password);
-    if (!checkPassword) {
-      return NextResponse.json(
         {
-          success: false,
-          message: "Incorrect password. Please try again !",
-        },
-        { status: 400 }
+          status: 401,
+        }
       );
     }
-
     const access_token = jwt.sign(
       {
         id: checkUser._id,
@@ -73,7 +72,6 @@ export async function POST(req) {
       "default_secret_key",
       { expiresIn: "90d" }
     );
-
     const finalData = {
       access_token,
       refresh_token,
@@ -86,22 +84,20 @@ export async function POST(req) {
         isAdmin: checkUser.isAdmin,
       },
     };
-
     return NextResponse.json({
       success: true,
-      message: "Login successfull!",
+      message: "refresh successfull!",
       finalData,
     });
-  } catch (e) {
-    console.log("Error while logging In. Please try again");
-
+  } catch (error) {
+    console.log(error);
     return NextResponse.json(
       {
         success: false,
-        message: "Something went wrong ! Please try again later",
+        message: "something went wrong",
       },
       {
-        status: 404,
+        status: 500,
       }
     );
   }
