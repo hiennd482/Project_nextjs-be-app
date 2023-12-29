@@ -65,6 +65,9 @@ export const allTeachers = async () => {
   try {
     const res = await fetch(`/api/users/all-teacher`, {
       method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
       cache: "no-store",
     });
     const data = await res.json();
@@ -77,6 +80,9 @@ export const allStudents = async () => {
   try {
     const res = await fetch("/api/users/students", {
       method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
       cache: "no-store",
     });
     const data = await res.json();
