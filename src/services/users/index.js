@@ -78,7 +78,7 @@ export const allTeachers = async () => {
 };
 export const allStudents = async () => {
   try {
-    const res = await fetch("/api/users/students", {
+    const res = await fetch(`/api/users/students`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

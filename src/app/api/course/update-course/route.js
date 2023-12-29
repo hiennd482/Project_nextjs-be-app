@@ -33,10 +33,10 @@ export async function PUT(req) {
         const teacherId = User.findOne({ _id: extracData.teacher_id });
         await teacherId.updateOne({ $set: { teacher_of: extracData._id } });
       }
-      if (extracData.student_id) {
-        const teacherId = User.findOne({ _id: extracData.student_id });
-        await teacherId.updateOne({ $push: { student_of: extracData._id } });
-      }
+      // if (extracData.student_id) {
+      //   const teacherId = User.findOne({ _id: extracData.student_id });
+      //   await teacherId.updateOne({ $push: { student_of: extracData._id } });
+      // }
       return NextResponse.json({
         success: true,
         message: "Course updated successfully",

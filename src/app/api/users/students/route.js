@@ -2,7 +2,7 @@ import connectToDB from "@/database";
 import User from "@/models/user";
 import { NextResponse } from "next/server";
 
-export const dynacmic = "force-dynamic";
+export const dynamic = "force-dynamic";
 export async function GET() {
   try {
     await connectToDB();
