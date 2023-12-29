@@ -7,7 +7,7 @@ export async function GET() {
   try {
     await connectToDB();
     const onlyStudent = await User.find({ role: "user" });
-    if (onlyStudent && onlyStudent.length) {
+    if (onlyStudent) {
       return NextResponse.json({
         success: true,
         data: onlyStudent,
