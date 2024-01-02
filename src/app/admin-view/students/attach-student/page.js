@@ -73,6 +73,8 @@ const Attach = () => {
           ))}
         </Select> */}
         <select onChange={(e) => setIdUser(e.target.value)}>
+          <option selected>{"--chon hoc vien--"}</option>
+
           {student.map((i, index) => (
             <option key={index} value={i._id}>
               {i.name}
@@ -80,6 +82,8 @@ const Attach = () => {
           ))}
         </select>
         <select onChange={(e) => setIdCourse(e.target.value)}>
+          <option selected>{"--chon giao' vien--"}</option>
+
           {course.map((i, index) => (
             <option key={index} value={i._id}>
               {i.name}

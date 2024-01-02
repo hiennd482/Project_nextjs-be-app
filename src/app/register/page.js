@@ -22,8 +22,12 @@ const initialFormData = {
 export default function Register() {
   const [formData, setFormData] = useState(initialFormData);
   const [isRegistered, setIsRegistered] = useState(false);
-  const { pageLevelLoader, setPageLevelLoader, isAuthUser } =
-    useContext(GlobalContext);
+  const {
+    pageLevelLoader,
+    setPageLevelLoader,
+    isAuthUser,
+    componentLevelLoader,
+  } = useContext(GlobalContext);
 
   const router = useRouter();
 
@@ -114,11 +118,13 @@ export default function Register() {
                     disabled={!isFormValid()}
                     onClick={handleRegisterOnSubmit}
                   >
-                    {!pageLevelLoader ? (
+                    {componentLevelLoader && componentLevelLoader.loading ? (
                       <ComponentLevelLoader
                         text={"Loading..."}
                         color={"#ffffff"}
-                        loading={pageLevelLoader}
+                        loading={
+                          componentLevelLoader && componentLevelLoader.loading
+                        }
                       />
                     ) : (
                       "Đăng ký"

@@ -91,9 +91,9 @@ function Sidebar() {
             </li>
             <li>
               <Link
-                href="/admin-view/students"
+                href="/admin-view/setting"
                 className={`flex items-center gap-3 cursor-pointer p-2 text-gray-900 rounded-lg dark:text-white hover:text-purple-500 hover:bg-gray-100 dark:hover:bg-gray-700 group ${
-                  pathname.includes("/students")
+                  pathname.includes("/setting")
                     ? "bg-gray-200 text-black"
                     : "bg-white text-black"
                 }`}

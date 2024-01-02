@@ -224,6 +224,7 @@ export default function AddNewUser() {
                         });
                       }}
                     >
+                      <option selected>{"--chon giao' vien--"}</option>
                       {teacher.map((i, index) => (
                         <>
                           <option key={index} value={i._id}>
@@ -274,9 +275,8 @@ export default function AddNewUser() {
                         });
                       }}
                     >
-                      <option selected>
-                        {currentUpdateCourse.teacher_id.name}
-                      </option>
+                      {/* <option selected>{"--chon giao' vien--"}</option> */}
+                      <option>{currentUpdateCourse.teacher_id.name}</option>
                       {teacher.map((i, index) => (
                         <>
                           <option id={i._id} key={index} value={i._id}>
