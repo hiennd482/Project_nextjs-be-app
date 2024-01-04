@@ -14,6 +14,7 @@ const Objectimg = {
   edit: require("./icons/edit.svg"),
   empty: require("./empty.jpg"),
   blank: require("./blank.jpg"),
+  error: require("./loi404.jpg"),
 };
 
 export default Objectimg;
