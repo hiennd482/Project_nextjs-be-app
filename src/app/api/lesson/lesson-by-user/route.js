@@ -8,10 +8,18 @@ export const dynamic = "force-dynamic";
 export async function GET(req) {
   try {
     await connectToDB();
+    const { searchParams } = new URL(req.url);
+    const courseId = searchParams.get("id");
     const isAuthUser = await AuthUser(req);
+    if (!courseId) {
+      return NextResponse.json({
+        success: false,
+        message: "course id is required",
+      });
+    }
     if (isAuthUser) {
       const getData = await Lesson.find({
-        course_id: isAuthUser?.course,
+        course_id: courseId,
       }).populate({
         path: "child",
         model: Filelessons,

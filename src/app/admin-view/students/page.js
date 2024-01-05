@@ -64,7 +64,7 @@ const Student = () => {
       // router.refresh();
     }
   };
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   // const handleSearch = async (e) => {
   //   // e.preventDefault();
   //   console.log("data", dataSearch);
@@ -117,7 +117,22 @@ const Student = () => {
   const handleDeleteUser = async (item) => {
     console.log(item);
     if (confirm(`Delete student ${item.name} ?`) == true) {
-      const data = await disattachALL(item._id);
+      const res = await disattachALL(item._id);
+      if (res?.success) {
+        // console.log(">>> mutate ", data.success);
+        toast.success(res.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+        // router.push("/admin-view/users/refresh-page/");
+        // router.refresh();
+      } else {
+        toast.error(res.message, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      }
     } else {
       console.log("caclles");
     }
@@ -127,7 +142,7 @@ const Student = () => {
     console.log(item);
     const res = await getAStudent(item._id);
     if (res?.success) {
-      console.log("first", res);
+      // console.log("first", res);
       setStudent(res.data);
     } else {
       console.log("loix roi ", res.message);
@@ -135,8 +150,8 @@ const Student = () => {
   };
 
   const handleDisattach = async (item) => {
-    console.log(item);
-    if (item !== undefined) {
+    // console.log(item);
+    if (item !== null) {
       const res = await disattachStudent(item.id, item.course_id);
       if (res?.success) {
         // console.log(">>> mutate ", data.success);
@@ -153,7 +168,12 @@ const Student = () => {
           position: toast.POSITION.TOP_RIGHT,
         });
       }
+      console.log("item", item);
     }
+  };
+  const handleClose = () => {
+    setStudent(null);
+    onClose();
   };
   return (
     <>
@@ -327,9 +347,10 @@ const Student = () => {
             isOpen={isOpen}
             onOpenChange={onOpenChange}
             isDismissable={false}
+            isClose={onClose}
           >
             <ModalContent>
-              {(isClose) => (
+              {() => (
                 <>
                   {student && student.length !== 0 ? (
                     <>
@@ -388,7 +409,7 @@ const Student = () => {
                         <Button
                           color="danger"
                           variant="light"
-                          onPress={isClose}
+                          onPress={() => handleClose()}
                         >
                           Close
                         </Button>

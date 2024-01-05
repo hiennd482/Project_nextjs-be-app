@@ -6,7 +6,7 @@ import { Button, Select, SelectItem } from "@nextui-org/react";
 import { toast } from "react-toastify";
 import Notification from "@/components/Notification";
 import { useRouter } from "next/navigation";
-
+import { FaRegUser, FaTable } from "react-icons/fa";
 const Attach = () => {
   const [student, setStudent] = useState([]);
   const [course, setCourse] = useState([]);
@@ -46,33 +46,57 @@ const Attach = () => {
         });
 
         setTimeout(() => {
-          router.push("/admin-view/students/");
-        }, 1000);
+          window.location.reload();
+        }, 500);
       } else {
         toast.error(res?.message ? res.message : res, {
           position: toast.POSITION.TOP_RIGHT,
         });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
         //   setComponentLevelLoader({ loading: false, id: "" });
       }
     }
   };
-
+  const onDisable = () => {
+    if (idUser !== "" && idCourse !== "") {
+      return false;
+    } else {
+      return true;
+    }
+  };
   return (
     <div className="p-2 m-3">
-      <div className=" border border-red-500">
-        {/* <Select
-          label="Chon hoc vien de gan"
-          className="max-w-xs"
-          onChange={handleSelectionChange}
-          selectedKeys={[idUser]}
-        >
-          {student.map((i, index) => (
-            <SelectItem key={index} value={i._id}>
-              {i.name}
-            </SelectItem>
-          ))}
-        </Select> */}
-        <select onChange={(e) => setIdUser(e.target.value)}>
+      <div className=" border p-2">
+        <div className="flex justify-center">
+          <h3 className="font-bold">THEM HOC VIEN</h3>
+        </div>
+        <div className="flex justify-around my-2">
+          <Select
+            items={student}
+            labelPlacement="outside"
+            startContent={<FaRegUser color="blue" />}
+            label="Danh sach hoc vien:"
+            placeholder="chon hoc vien de gan"
+            className="max-w-xs"
+            onChange={(e) => setIdUser(e.target.value)}
+          >
+            {(i) => <SelectItem key={i._id.toString()}>{i.name}</SelectItem>}
+          </Select>
+          <Select
+            items={course}
+            labelPlacement="outside"
+            startContent={<FaTable color="purple"></FaTable>}
+            label="Danh sach khoa hoc:"
+            placeholder="chon khoa hoc"
+            className="max-w-xs"
+            onChange={(e) => setIdCourse(e.target.value)}
+          >
+            {(i) => <SelectItem key={i._id.toString()}>{i.name}</SelectItem>}
+          </Select>
+        </div>
+        {/* <select onChange={(e) => setIdUser(e.target.value)}>
           <option selected>{"--chon hoc vien--"}</option>
 
           {student.map((i, index) => (
@@ -89,22 +113,15 @@ const Attach = () => {
               {i.name}
             </option>
           ))}
-        </select>
-        {/* <Select
-          label="Chon khoa hoc "
-          className="max-w-xs"
-          onChange={(e) => setCourse(e.target.value)}
-        >
-          {course.map((i, index) => (
-            <SelectItem key={index} value={i._id}>
-              {i.name}
-            </SelectItem>
-          ))}
-        </Select> */}
-        <p className="text-small text-default-500">Selected: {idUser}</p>
-        <p className="text-small text-default-500">Selected: {idCourse}</p>
-        <div>
-          <Button onPress={() => handleSubmit()}>Submit</Button>
+        </select> */}
+        <div className="flex justify-center">
+          <Button
+            color="secondary"
+            isDisabled={onDisable()}
+            onPress={() => handleSubmit()}
+          >
+            Submit
+          </Button>
         </div>
       </div>
       <Notification></Notification>
