@@ -5,16 +5,6 @@ export const navOptions = [
     path: "/",
   },
   {
-    id: "listing",
-    label: "Sản phẩm",
-    path: "/product/listing/all-products",
-  },
-  {
-    id: "vegetable",
-    label: "Cửa hàng",
-    path: "/product/listing/men",
-  },
-  {
     id: "listingWomen",
     label: "Về chúng tôi",
     path: "/product/listing/women",

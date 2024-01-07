@@ -86,9 +86,14 @@ export default function Navbar() {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <div
             onClick={() => router.push("/")}
-            className="flex items-center cursor-pointer"
+            className="flex items-center cursor-pointer gap-2"
           >
-            <Image src={iconPath.logoBig} alt="logo"></Image>
+            <Image
+              src={iconPath.logo2}
+              className="w-[60px] h-auto"
+              alt="logo"
+            ></Image>
+            <text className="font-bold text-xl text-blue-custom">Hiedu</text>
           </div>
           <div className="flex md:order-2 gap-2">
             {!isAdminView && isAuthUser ? (

@@ -60,7 +60,7 @@ function Sidebar() {
                 }`}
               >
                 <FaListAlt />
-                dayla cou se
+                courses
               </Link>
             </li>
             <li>
@@ -86,7 +86,7 @@ function Sidebar() {
                 }`}
               >
                 <FaUserGraduate />
-                collage
+                student
               </Link>
             </li>
             <li>
