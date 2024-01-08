@@ -14,13 +14,17 @@ const courseSchema = new mongoose.Schema(
         ref: "Lessons",
       },
     ],
+    total_complete_lessons: {
+      type: Number,
+      default: 0,
+    },
     total_lessons: {
       type: Number,
       default: 0,
     },
     percent_complete: {
       type: Number,
-      default: 0,
+      default: 100,
     },
     teacher_id: {
       type: mongoose.Schema.Types.ObjectId,
@@ -35,6 +39,14 @@ const courseSchema = new mongoose.Schema(
     total_student: {
       type: Number,
       default: 0,
+    },
+    can_learn: {
+      type: Boolean,
+      default: true,
+    },
+    complete_lessons: {
+      type: Array,
+      default: [],
     },
   },
   { timestamps: true }
