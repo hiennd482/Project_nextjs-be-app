@@ -37,6 +37,7 @@ import {
   ModalFooter,
   useDisclosure,
   Spinner,
+  Progress,
 } from "@nextui-org/react";
 import { GlobalContext } from "@/context";
 import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
@@ -209,7 +210,8 @@ const Student = () => {
             <TableColumn key="name">HO VA TEN</TableColumn>
             <TableColumn key="role">EMAIL</TableColumn>
             <TableColumn key="status">NGAY DANG KY</TableColumn>
-            <TableColumn key="course">Tong so khoa' hoc</TableColumn>
+            <TableColumn key="role">So khoa hoc </TableColumn>
+
             <TableColumn key="actions">CHỨC NĂNG</TableColumn>
           </TableHeader>
           <TableBody items={items}>
@@ -221,6 +223,7 @@ const Student = () => {
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.email}</TableCell>
+
                 <TableCell>
                   {" "}
                   {item.createdAt
@@ -370,6 +373,9 @@ const Student = () => {
                             <TableHeader>
                               <TableColumn key="no">stt</TableColumn>
                               <TableColumn key="name">Tiêu đề</TableColumn>
+                              <TableColumn key="progress">
+                                Tien trinfh
+                              </TableColumn>
                               <TableColumn key="actions">CHỨC NĂNG</TableColumn>
                             </TableHeader>
                             <TableBody items={student}>
@@ -381,6 +387,30 @@ const Student = () => {
                                   <TableCell>{index + 1}</TableCell>
 
                                   <TableCell> {i.name}</TableCell>
+                                  <TableCell>
+                                    <>
+                                      {(i.total_complete_lessons /
+                                        i.total_lessons) *
+                                        100 || 0}{" "}
+                                      %
+                                      <Progress
+                                        // label={
+                                        //   (i.total_complete_lessons /
+                                        //     i.total_lessons) *
+                                        //     100 || 0
+                                        // }
+                                        isStriped
+                                        // aria-label="Loading..."
+                                        color="secondary"
+                                        value={
+                                          (i.total_complete_lessons /
+                                            i.total_lessons) *
+                                            100 || 0
+                                        }
+                                        className="max-w-md"
+                                      />
+                                    </>
+                                  </TableCell>
                                   <TableCell>
                                     <div className="flex gap-5">
                                       <Button
