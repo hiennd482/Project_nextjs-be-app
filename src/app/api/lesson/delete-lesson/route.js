@@ -40,7 +40,6 @@ export async function DELETE(req) {
         },
         {
           $pull: { lessons_id: id },
-          $set: { total_lessons: getTotal - 1 },
         }
       );
       const deleteLesson = await Lesson.findByIdAndDelete(id);

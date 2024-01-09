@@ -31,9 +31,14 @@ export async function POST(req) {
         path: "course_id",
         model: Course,
       });
-      const pushFile = await Lesson.updateMany({
-        $push: { child: newFile._id },
-      });
+      const pushFile = await Lesson.findByIdAndUpdate(
+        { _id: data.lesson_id },
+        {
+          $push: { child: newFile._id },
+        }
+      );
+      // await lessonId.updateOne({ $push: { child: newFile._id } });
+
       lessonId.map((i) => {
         // console.log(i.course_id._doc[0]);
         i.course_id.map((c) => {
@@ -65,13 +70,16 @@ export async function POST(req) {
         return total_lessons;
         // console.log("tét", i.lessons_id.child);
       });
-      let numbertotal = 0;
-      numbertotal = +getTotal + 1;
-      console.log(numbertotal);
-      await Course.updateMany({
-        $set: { total_lessons: numbertotal },
-      });
-      // await lessonId.updateOne({ $push: { child: newFile._id } });
+      // let numbertotal = 0;
+      // numbertotal = +getTotal + 1;
+      // console.log(numbertotal);
+      // const getCuour
+      await Course.findByIdAndUpdate(
+        { _id: dataCourse.replace(/["]/g, "") },
+        {
+          $set: { total_lessons: +getTotal },
+        }
+      );
       // console.log("file", (dataCourse = lessonId));
       if (pushFile) {
         return NextResponse.json({

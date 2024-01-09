@@ -22,8 +22,11 @@ export async function PATCH(req) {
       });
       if (findFile) {
         let arr = [];
-        const checkTrue = await Filelessons.find({ complete: true });
-        console.log("first", checkTrue.length);
+        // const checkTrue = await Filelessons.find(
+        //   { _id: fileId },
+        //   { complete: true }
+        // );
+        // console.log("first", checkTrue.length + 1);
         // arr.push(checkTrue);
         return NextResponse.json({
           success: false,
@@ -31,29 +34,43 @@ export async function PATCH(req) {
         });
       } else {
         let dataCourse = "";
+        let lengthTrue = 0;
         const pathFile = await Filelessons.findById(fileId);
         await pathFile.updateOne({ $set: { complete: true } });
-        const checkTrue = await Filelessons.find({
-          complete: true,
-        });
-        console.log("first", checkTrue.length);
+        // const checkTrue = await Filelessons.find(
+        //   { _id: fileId },
+        //   {
+        //     complete: true,
+        //   }
+        // );
+        // let check = checkTrue.length;
+        // console.log("first", check + 1);
         const getLesson = await Lesson.find({ child: fileId }).populate({
           path: "course_id",
           model: Course,
+          path: "child",
+          model: Filelessons,
         });
+        let arr = [];
         //   console.log("daay ", getLesson);
         getLesson.map((i) => {
-          console.log("first", i);
+          // console.log("first", i);
           i.course_id.map((c) => {
             dataCourse = JSON.stringify(c._id);
           });
+          i.child.map((t) => {
+            if (t.complete !== false) {
+              arr.push(t);
+            }
+          });
+          console.log(arr.length);
         });
         console.log(dataCourse.replace(/["]/g, ""));
         const courseId = await Course.findByIdAndUpdate(
           {
             _id: dataCourse.replace(/["]/g, ""),
           },
-          { total_complete_lessons: checkTrue.length }
+          { total_complete_lessons: arr.length }
         );
         return NextResponse.json({
           success: true,

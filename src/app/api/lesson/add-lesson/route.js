@@ -26,16 +26,16 @@ export async function POST(req) {
       const newLesson = await Lesson.create(data);
       // console.log("data length", newLesson._id.length);
       // const countLesson=await Lesson.findById
-      // const courseId = await Course.findById(data.course_id);
+      const courseId = await Course.findById(data.course_id);
       // console.log("test data", courseId._doc.lessons_id.length);
       // const totalLesson = courseId._doc.lessons_id.length;
       // // return NextResponse.json({
       // //   message: courseId,
       // // });
-      // await courseId.updateOne({
-      //   $push: { lessons_id: newLesson._id },
-      //   $set: { total_lessons: totalLesson + 1 },
-      // });
+      await courseId.updateOne({
+        $push: { lessons_id: newLesson._id },
+        // $set: { total_lessons: totalLesson + 1 },
+      });
       // const testCourse = await Course.findById(data.course_id);
       // await courseId.updateOne({
       //   $set: { total_lessons: testCourse.lessons_id.length },
