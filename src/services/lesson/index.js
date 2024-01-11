@@ -119,3 +119,37 @@ export const updateFilelessons = async (id, formBody) => {
     console.log(error);
   }
 };
+
+// Top courses by student
+export const getTopCoursesByStudent = async () => {
+  try {
+    const res = await fetch("/api/lesson/top-courses-by-student", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+      cache: "no-store",
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Top student completed courses ascending
+export const getTopStudentCompletedCourses = async () => {
+  try {
+    const res = await fetch("/api/lesson/top-student-completed-courses", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+      cache: "no-store",
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

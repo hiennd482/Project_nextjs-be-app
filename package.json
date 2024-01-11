@@ -17,7 +17,7 @@
     "autoprefixer": "10.4.14",
     "bcryptjs": "^2.4.3",
     "chart.js": "^4.4.0",
-    "faker": "^6.6.6",
+    "faker": "^5.5.3",
     "firebase": "^10.0.0",
     "flowbite": "^1.8.1",
     "flowbite-react": "^0.6.4",
@@ -27,7 +27,7 @@
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.3.2",
     "next": "^13.5.4",
-    "postcss": "8.4.25",
+    "postcss": "^8.4.33",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
@@ -39,6 +39,8 @@
     "tailwindcss": "3.3.2"
   },
   "devDependencies": {
-    "encoding": "^0.1.13"
+    "@types/react": "18.2.47",
+    "encoding": "^0.1.13",
+    "typescript": "5.3.3"
   }
 }
