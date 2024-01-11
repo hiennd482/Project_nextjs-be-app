@@ -1,16 +1,13 @@
 "use client";
 
-import { GlobalContext } from "@/context";
 import { getAllAdminProducts } from "@/services/product";
 import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import iconPath from "@/assets/index";
 import Footer from "@/components/Footer";
-import { Button } from "@nextui-org/react";
-export default function Home() {
-  const { isAuthUser } = useContext(GlobalContext);
 
+export default function Home() {
   const [products, setProducts] = useState([]);
   const router = useRouter();
 

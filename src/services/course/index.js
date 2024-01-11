@@ -14,6 +14,7 @@ export const getAllCourse = async () => {
     console.log(">>service", error);
   }
 };
+
 export const getOneCourse = async (id) => {
   try {
     const res = await fetch(`/api/course/course-by-id?id=${id}`, {
