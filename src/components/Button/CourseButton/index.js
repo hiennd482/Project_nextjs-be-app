@@ -39,10 +39,10 @@ const CourseButton = ({ item }) => {
           position: toast.POSITION.TOP_RIGHT,
         });
         setTimeout(() => {
-          router.push("/admin-view/course");
+          router.push("/admin-view/course/refresh/");
+          router.refresh();
         }, 1000);
         // router.push("/admin-view/users/refresh-page/");
-        // router.refresh();
       } else {
         toast.error(data.message, {
           position: toast.POSITION.TOP_RIGHT,

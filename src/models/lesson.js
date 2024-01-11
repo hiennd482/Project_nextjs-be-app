@@ -4,8 +4,8 @@ const lessonSchema = new mongoose.Schema(
   {
     name: String,
     complete: {
-      type: Boolean,
-      default: false,
+      type: Number,
+      default: 0,
     },
     course_id: [
       {
