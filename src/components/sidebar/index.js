@@ -60,7 +60,7 @@ function Sidebar() {
                 }`}
               >
                 <FaListAlt />
-                courses
+                Khóa Học
               </Link>
             </li>
             <li>
@@ -86,7 +86,7 @@ function Sidebar() {
                 }`}
               >
                 <FaUserGraduate />
-                student
+                Học viên
               </Link>
             </li>
             <li>

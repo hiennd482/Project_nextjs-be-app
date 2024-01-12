@@ -181,7 +181,7 @@ const Student = () => {
       {/* head title */}
       <HeadeTitle
         home={"Home"}
-        name={"Quan ly collage"}
+        name={"Quản lý học viên"}
         onClick={() => handleClick()}
       ></HeadeTitle>
       {/* table */}
@@ -207,10 +207,10 @@ const Student = () => {
         >
           <TableHeader>
             <TableColumn key="no">stt</TableColumn>
-            <TableColumn key="name">HO VA TEN</TableColumn>
-            <TableColumn key="role">EMAIL</TableColumn>
-            <TableColumn key="status">NGAY DANG KY</TableColumn>
-            <TableColumn key="role">So khoa hoc </TableColumn>
+            <TableColumn key="name">Họ và tên</TableColumn>
+            <TableColumn key="role">email</TableColumn>
+            <TableColumn key="status">Ngày đăng ký</TableColumn>
+            <TableColumn key="role">Số khóa học </TableColumn>
 
             <TableColumn key="actions">CHỨC NĂNG</TableColumn>
           </TableHeader>

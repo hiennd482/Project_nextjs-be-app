@@ -26,7 +26,7 @@ export default function TabView() {
         <Tab key="intro" title="Intro Course">
           <HeadeTitle
             home={"Home"}
-            name={"Quan ly user"}
+            name={"Quản lý user"}
             onClick={() => handleClick()}
           ></HeadeTitle>
         </Tab>

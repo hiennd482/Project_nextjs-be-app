@@ -108,7 +108,7 @@ const Mainuser = () => {
       {/* head title */}
       <HeadeTitle
         home={"Home"}
-        name={"Quan ly khoa hoc"}
+        name={"Quản lý khóa học"}
         onClick={() => handleClick()}
       ></HeadeTitle>
 
@@ -138,7 +138,7 @@ const Mainuser = () => {
             <TableColumn key="name">Tên khóa học</TableColumn>
             <TableColumn key="teacher">Tên giáo viên</TableColumn>
             <TableColumn key="lesson">Tổng số bài học</TableColumn>
-            <TableColumn key="student">Tổng số học viên</TableColumn>
+            {/* <TableColumn key="student">Tổng số học viên</TableColumn> */}
             <TableColumn key="status">Ngày tạo</TableColumn>
             <TableColumn key="actions">CHỨC NĂNG</TableColumn>
           </TableHeader>
@@ -166,7 +166,7 @@ const Mainuser = () => {
                 <TableCell className="hover:cursor-pointer transition">
                   {item.total_lessons}
                 </TableCell>
-                <TableCell>{item.total_student}</TableCell>
+                {/* <TableCell>{item.total_student}</TableCell> */}
                 <TableCell>
                   {" "}
                   {item.createdAt

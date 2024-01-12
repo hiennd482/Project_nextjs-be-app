@@ -24,6 +24,7 @@ import {
   FaPen,
   FaRegTrashAlt,
   FaBookMedical,
+  FaCheck,
 } from "react-icons/fa";
 import { toast } from "react-toastify";
 import {
@@ -235,7 +236,7 @@ const Addlesson = () => {
                   <Divider className="" />
                   <CardBody>
                     <div>
-                      <span>danh sach bai hoc:</span>
+                      <span>Danh sách bài học:</span>
 
                       {data?.map((i, index) => (
                         <div key={index} className="flex items-center">
@@ -283,7 +284,7 @@ const Addlesson = () => {
                         onPress={onOpen}
                         // onPress={console.log("day la press")}
                       >
-                        Them bai hoc moi <FaFolderPlus />
+                        Thêm bài học mới <FaFolderPlus />
                       </Button>
                     </div>
                   </CardBody>
@@ -303,11 +304,11 @@ const Addlesson = () => {
                         <>
                           {file.name === "" ? (
                             <ModalHeader className="flex flex-col gap-1">
-                              Them bai hoc
+                              Thêm bài học
                             </ModalHeader>
                           ) : (
                             <ModalHeader className="flex flex-col gap-1">
-                              Sua bai hoc
+                              Sửa bài học
                             </ModalHeader>
                           )}
                           <ModalBody>
@@ -354,7 +355,7 @@ const Addlesson = () => {
                                 ))}
                               </>
                             )}
-                            <div className="flex">
+                            <div className="flex items-center">
                               <input
                                 id="upload-img"
                                 // accept="video/mp4"
@@ -375,7 +376,9 @@ const Addlesson = () => {
                                 </>
                               ) : (
                                 <>
-                                  <text>done</text>
+                                  <text>
+                                    <FaCheck color="green" />
+                                  </text>
                                 </>
                               )}
                             </div>
@@ -386,7 +389,7 @@ const Addlesson = () => {
                               variant="light"
                               onPress={() => handleClose()}
                             >
-                              Close
+                              Đóng
                             </Button>
                             {id !== "" ? (
                               <>
@@ -394,7 +397,7 @@ const Addlesson = () => {
                                   color="primary"
                                   onPress={() => handleEdit()}
                                 >
-                                  edit
+                                  Sửa
                                 </Button>
                               </>
                             ) : (
@@ -404,7 +407,7 @@ const Addlesson = () => {
                                   color="primary"
                                   onPress={() => handleAddFile()}
                                 >
-                                  add
+                                  Thêm
                                 </Button>
                               </>
                             )}
@@ -469,11 +472,11 @@ const Addlesson = () => {
                       <>
                         {file.name === "" ? (
                           <ModalHeader className="flex flex-col gap-1">
-                            Them bai hoc
+                            Thêm bài học
                           </ModalHeader>
                         ) : (
                           <ModalHeader className="flex flex-col gap-1">
-                            Sua bai hoc
+                            Sửa bài học
                           </ModalHeader>
                         )}
                         <ModalBody>

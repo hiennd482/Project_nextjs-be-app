@@ -135,12 +135,14 @@ const Lesson = () => {
         {/* <Divider className="my-4" /> */}
         <CardBody>
           <div className="flex  gap-2 justify-between items-stretch">
-            <div className="flex-col">
-              <h3 className="text-small">
-                Mo ta ve khoa hoc:{data.about_course}
+            <div className="flex-col ">
+              <h3 className="text-small pb-3">
+                <text className="font-bold">Mô tả về khóa học:</text> {""}
+                {data.about_course} <br />
               </h3>
               <h3 className="text-small">
-                Gioi thieu ve khoa hoc:{data.about_intro}
+                <text className="font-bold"> Giới thiệu về khóa học:</text> {""}
+                {data.about_intro}
               </h3>
             </div>
             {/* <span>{course.teacher_id?.name}</span> */}
@@ -149,7 +151,7 @@ const Lesson = () => {
         <Divider className="" />
         <CardBody>
           <div>
-            <span>Noi dung khoa hoc:</span>
+            <span>Nội dung khóa học:</span>
 
             {data.lessons_id?.map((i, index) => (
               <div className="flex items-center">
@@ -166,7 +168,7 @@ const Lesson = () => {
                       onPress={() => handleFile(i)}
                       // onPress={console.log("day la press")}
                     >
-                      Them bai hoc moi <FaBookMedical />
+                      Thêm bài học mới <FaBookMedical />
                     </Button>
                   </AccordionItem>
                 </Accordion>
@@ -200,7 +202,7 @@ const Lesson = () => {
               onPress={onOpen}
               // onPress={console.log("day la press")}
             >
-              Them chuong moi <FaFolderPlus />
+              Thêm chương mới <FaFolderPlus />
             </Button>
           </div>
         </CardBody>
@@ -214,11 +216,12 @@ const Lesson = () => {
             {(isClose) => (
               <>
                 <ModalHeader className="flex flex-col gap-1">
-                  Them chuong moi
+                  Thêm chương mới
                 </ModalHeader>
                 <ModalBody>
                   <input
                     type="text"
+                    placeholder="nhập tên chương..."
                     value={chapter}
                     onChange={(e) => setChapter(e.target.value)}
                     id="default-input"
@@ -227,10 +230,10 @@ const Lesson = () => {
                 </ModalBody>
                 <ModalFooter>
                   <Button color="danger" variant="light" onPress={isClose}>
-                    Close
+                    Đóng
                   </Button>
                   <Button color="primary" onPress={() => handleAddChapter()}>
-                    Action
+                    Đồng ý
                   </Button>
                 </ModalFooter>
               </>

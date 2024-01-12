@@ -77,13 +77,13 @@ const ModalUpdate = (props) => {
                         onClick={handleClose}
                         className="px-4 py-2 rounded-md !bg-[red] !text-white text-[14px]"
                       >
-                        close
+                        Đóng
                       </button>
                       <button
                         onClick={handleSumbit}
                         className="px-4 py-2 rounded-md bg-[#f3f3f3] text-black hover:bg-black hover:text-white  text-[14px]"
                       >
-                        Save
+                        Lưu
                       </button>
                     </div>
                   </div>

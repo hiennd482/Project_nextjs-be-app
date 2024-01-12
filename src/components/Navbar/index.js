@@ -126,7 +126,7 @@ export default function Navbar() {
                   }
                   onClick={() => router.push("/")}
                 >
-                  Client View
+                  Trang chủ
                 </button>
               ) : (
                 <button
@@ -135,7 +135,7 @@ export default function Navbar() {
                     "mt-1.5 inline-block bg-green-custom px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
                   }
                 >
-                  Admin View
+                  Trang quản trị
                 </button>
               )
             ) : null}
@@ -146,7 +146,7 @@ export default function Navbar() {
                   "mt-1.5 inline-block bg-green-custom px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
                 }
               >
-                Logout
+                Đăng xuất
               </button>
             ) : (
               <button
@@ -155,7 +155,7 @@ export default function Navbar() {
                   "mt-1.5 inline-block bg-green-custom px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
                 }
               >
-                Login
+                Đăng nhập
               </button>
             )}
             <button

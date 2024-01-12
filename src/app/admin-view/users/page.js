@@ -112,12 +112,12 @@ const Mainuser = () => {
       {/* head title */}
       <HeadeTitle
         home={"Home"}
-        name={"Quan ly user"}
+        name={"Quản lý user"}
         onClick={() => handleClick()}
       ></HeadeTitle>
 
       {/* table */}
-      <Button onPress={() => handleFilter()}>loc</Button>
+      <Button onPress={() => handleFilter()}>giáo viên</Button>
       <Button onPress={() => allUsers()}>tất cả</Button>
       {dataUser && dataUser.length ? (
         <Table

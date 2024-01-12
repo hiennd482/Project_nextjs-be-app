@@ -308,9 +308,9 @@ export default function AddNewUser() {
                 loading={componentLevelLoader && componentLevelLoader.loading}
               />
             ) : currentUpdateCourse !== null ? (
-              "Update user"
+              "cập nhật khóa học"
             ) : (
-              "Add user"
+              "Thêm khóa học"
             )}
           </button>
         </div>

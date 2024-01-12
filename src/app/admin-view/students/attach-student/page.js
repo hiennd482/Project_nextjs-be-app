@@ -70,15 +70,15 @@ const Attach = () => {
     <div className="p-2 m-3">
       <div className=" border p-2">
         <div className="flex justify-center">
-          <h3 className="font-bold">THEM HOC VIEN</h3>
+          <h3 className="font-bold">Thêm học viên</h3>
         </div>
         <div className="flex justify-around my-2">
           <Select
             items={student}
             labelPlacement="outside"
             startContent={<FaRegUser color="blue" />}
-            label="Danh sach hoc vien:"
-            placeholder="chon hoc vien de gan"
+            label="Danh sách học viên:"
+            placeholder="chọc học viên để gắn"
             className="max-w-xs"
             onChange={(e) => setIdUser(e.target.value)}
           >
@@ -88,8 +88,8 @@ const Attach = () => {
             items={course}
             labelPlacement="outside"
             startContent={<FaTable color="purple"></FaTable>}
-            label="Danh sach khoa hoc:"
-            placeholder="chon khoa hoc"
+            label="Danh sách khóa học:"
+            placeholder="chọn khóa học"
             className="max-w-xs"
             onChange={(e) => setIdCourse(e.target.value)}
           >
@@ -120,7 +120,7 @@ const Attach = () => {
             isDisabled={onDisable()}
             onPress={() => handleSubmit()}
           >
-            Submit
+            Đồng ý
           </Button>
         </div>
       </div>

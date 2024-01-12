@@ -27,7 +27,7 @@ export default function App() {
               pathname === "/admin-view/course/lesson" ? "always" : "none"
             }
           >
-            Gioi thieu ve khoa hoc
+            Giới thiệu về khóa học
           </Link>
         </NavbarItem>
         <NavbarItem>
@@ -44,7 +44,7 @@ export default function App() {
                 : "none"
             }
           >
-            bai hoc
+            Bài học
           </Link>
         </NavbarItem>
       </NavbarContent>

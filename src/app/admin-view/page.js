@@ -75,7 +75,7 @@ const Pagin = () => {
           </CardBody>
         </Card>
 
-        <Card className="w-full bg-purple-500 flex justify-center items-center rounded-sm">
+        <Card className="w-full bg-purple-500 flex justify-center items-center rounded-md">
           <CardHeader className="flex-col items-center">
             <h4 className="font-bold text-large text-white">
               {teacherInUser.length}
@@ -90,7 +90,7 @@ const Pagin = () => {
           </CardBody>
         </Card>
 
-        <Card className="w-full bg-purple-500 flex justify-center items-center rounded-sm">
+        <Card className="w-full bg-purple-500 flex justify-center items-center rounded-md">
           <CardHeader className="flex-col items-center">
             <h4 className="font-bold text-large text-white">
               {studentInUser.length}
@@ -105,7 +105,7 @@ const Pagin = () => {
         </Card>
       </div>
       <div className="flex gap-3 justify-evenly">
-        <div className="flex flex-col w-[45%]">
+        {/* <div className="flex flex-col w-[45%]">
           <h4 className="font-bold text-large mb-5">Top khoá học</h4>
           <div className="flex justify-between border-b-1 border-gray-400 py-3">
             <p className="w-8">#</p>
@@ -134,15 +134,15 @@ const Pagin = () => {
               );
             })}
           </div>
-        </div>
-        <div className="flex flex-col w-[45%]">
+        </div> */}
+        <div className="flex flex-col w-[100%]">
           <h4 className="font-bold text-large mb-5">Top học viên </h4>
-          <div className="flex justify-between border-b-1 border-gray-400 py-3">
+          <div className="flex justify-between border-b-1  border-gray-300 py-3">
             <p className="w-8">#</p>
 
             <h3 className="w-auto font-bold">Họ và tên</h3>
 
-            <h3 className="w-24 font-bold">Hoàn thành khóa học</h3>
+            <h3 className=" font-bold">Hoàn thành khóa học</h3>
           </div>
 
           <div className="flex flex-col ">
@@ -153,12 +153,12 @@ const Pagin = () => {
               return (
                 <div
                   key={item._id}
-                  className="flex justify-between border-b-1 border-gray-400 py-3"
+                  className="flex justify-between border-b-1 border-gray-300 py-3"
                   style={isLastItem ? { borderBottom: "none" } : {}}
                 >
                   <p className="w-8">{index + 1}</p>
 
-                  <div className="w-auto">{item.name}</div>
+                  <div className="w-auto text-lg font-bold ">{item.name}</div>
 
                   <div className="w-24">{item.student_of.length}</div>
                 </div>
