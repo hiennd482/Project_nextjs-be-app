@@ -15,9 +15,9 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "subscibe-footer": "url(../assets/footer.jpg)",
-        banner: "url(../assets/banner.jpg)",
-        section1: "url(../assets/section1.jpg)",
-        section2: "url(../assets/section2.jpg)",
+        banner: "url(../assets/newbanner2.jpg)",
+        section1: "url(../assets/newsection2.png)",
+        section2: "url(../assets/newsection.png)",
         sectionabout: "url(../assets/sectionaboutus.png)",
       },
       colors: {

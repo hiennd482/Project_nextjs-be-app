@@ -33,12 +33,13 @@ function Footer() {
           {/* padding */}
           <div className=" flex-col text-center px-3  ">
             <div className="flex  justify-center">
-              <Image src={iconPath.logoBig} alt="logo"></Image>
+              <Image
+                src={iconPath.logo2}
+                alt="logo"
+                className="w-[200px] h-[200px]"
+              ></Image>
             </div>
-            <p>
-              We are a popular and farming company aspiring to be a leader in
-              the Organic food industry.
-            </p>
+
             <div className="flex gap-4 justify-center mt-8 cursor-pointer">
               <Image
                 src={iconPath.fbicon}

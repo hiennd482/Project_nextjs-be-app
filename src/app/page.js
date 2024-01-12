@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <main className="">
       <section className="">
-        <div className="bg-banner bg-no-repeat bg-cover bg-[70%] rounded-lg">
+        <div className="bg-banner bg-no-repeat bg-cover  rounded-lg">
           <div className=" max-w-[1300px] mx-auto px-0 ">
             <div className="lg:pt-[220px] lg:pb-[240px]">
               <p className="text-green-custom text-[36px] mb-[15px] capitalize font-sanscustom">
@@ -37,8 +37,8 @@ export default function Home() {
 
               <h1 className="text-[70px] mt-[20px]  font-roboto font-bold text-blue-custom leading-tight">
                 Welcome to the <br />
-                world of nature <br />
-                and organic.
+                world of technology <br />
+                and education.
               </h1>
               {/* <Btn
               text={"Explore More"}
@@ -54,19 +54,21 @@ export default function Home() {
           <div className="max-w-[940px] mx-0 px-[30px]   xl:max-w-[1440px] xl:mx-auto xl:px-0">
             <div className="grid xl:grid-cols-2 gap-[16px]">
               <div className="bg-section1 bg-no-repeat bg-cover bg-[50%] rounded-[30px] xl:pt-[50px] xl:pb-[95px] xl:pl-[55px] ">
-                <p className="text-white mb-0 text-[36px] font-sanscustom">
-                  Natural!!
+                <p className="text-white mb-0 text-[20px] font-sanscustom">
+                  Năng động!!
                 </p>
-                <h2 className="text-white mt-0 text-[40px] font-[Roboto,sans-serif] font-bold leading-tight">
-                  Get garder <br></br>Fresh fruit
+                <h2 className="text-white mt-0 text-[20px] font-[Roboto,sans-serif] font-bold leading-tight">
+                  TỔ CHỨC THI VÀ CẤP CHỨNG CHỈ
+                  <br></br>Tạo bài thi nhanh chóng
                 </h2>
               </div>
               <div className="bg-section2 bg-no-repeat bg-cover bg-[50%] rounded-[30px] xl:pt-[50px] xl:pb-[95px] xl:pl-[55px] ">
                 <p className="text-green-custom mb-0 text-[36px] font-sanscustom">
-                  Offer!!
+                  Mới mẻ!!
                 </p>
-                <h2 className="text-blue-custom mt-0 text-[40px] font-[Roboto,sans-serif] font-bold leading-tight">
-                  Get 10% off <br></br>on Vesgestable
+                <h2 className="text-blue-custom mt-0 text-[20px] font-[Roboto,sans-serif] font-bold leading-tight">
+                  DẠY HỌC TRỰC TUYẾN QUA VIDEO
+                  <br></br>Làm 1 lần cung cấp cho hàng ngàn học viên
                 </h2>
               </div>
             </div>
@@ -87,24 +89,23 @@ export default function Home() {
               <div>
                 <div className="text-left">
                   <p className="text-green-custom font-sanscustom font-bold text-[32px] capitalize mb-0">
-                    about us
+                    Về chúng tôi
                   </p>
                   <h2 className="mb-[18px] text-[44px] xl:text-[50px] font-roboto leading-tight">
-                    We Believe In Organic <br /> Foods For Strong Health
+                    BẢO MẬT BÀI GIẢNG, CHỐNG DOWNLOAD <br />
                   </h2>
                   <p className="text-black-custom text-[18px] mb-[15px] font-normal leading-relaxed">
-                    Welcome to the world of natural and organic. Here you can
-                    discover the bounty of nature. We have grown on the
-                    principles of health, and care. We aim to give our customers
-                    a healthy chemical-free meal for perfect nutrition
+                    Giúp bạn không phải lo lắng sợ video bị tải lậu - quay màn
+                    hình.Hạn chế download video bài giảng. Chống chia sẻ tài
+                    khoản.Hạn chế quay màn hình.
                   </p>
                 </div>
                 <>
                   <div className="flex items-center mb-[30px] justify-start ">
                     <div className="bg-white h-[100px] xl:w-[100px] xl:min-h-[100px] xl:min-w-[100px] flex items-center justify-center rounded-3xl">
-                      <Image src={iconPath.foodaboutus} alt="food"></Image>
+                      {/* <Image src={iconPath.foodaboutus} alt="food"></Image> */}
                     </div>
-                    <div className="pl-5 ">
+                    {/* <div className="pl-5 ">
                       <h3 className="text-blue-custom font-bold text-[25px]">
                         Organic Foods Only
                       </h3>
@@ -113,23 +114,9 @@ export default function Home() {
                         have or not if have we will start to move on with the
                         next step.
                       </p>
-                    </div>
+                    </div> */}
                   </div>
-                  <div className="flex items-center mb-[30px] justify-start ">
-                    <div className="bg-white h-[100px] xl:w-[100px] xl:min-h-[100px] xl:min-w-[100px] flex items-center justify-center rounded-3xl">
-                      <Image src={iconPath.quality} alt="food"></Image>
-                    </div>
-                    <div className="pl-5 ">
-                      <h3 className="text-blue-custom font-bold text-[25px]">
-                        Quality Standards
-                      </h3>
-                      <p className="text-black-custom text-lg">
-                        Once your product is packed it will be delivered to your
-                        nearby locality you can directly visit the to buy the
-                        product.
-                      </p>
-                    </div>
-                  </div>
+
                   {/* <Btn
                   text="Shop"
                   background="bg-blue-custom"
@@ -142,44 +129,10 @@ export default function Home() {
           </div>
         </div>
         <div className=" py-[100px] xl:py-[120px] xl:max-w-[700px] max-w-[900px] mx-auto px-0 lg:col-span-2 lg:py-8 ">
-          <h1 className="flex items-center justify-center font-bold text-2xl p-2 text-blue-custom">
-            Sản phẩm nổi bật
-          </h1>
-          <ul className="grid grid-cols-3 gap-4">
-            {products && products.length
-              ? products
-                  .filter((item) => item.onSale === "yes")
-                  .splice(0, 3)
-                  .map((productItem) => (
-                    <li
-                      onClick={() => router.push(`/product/${productItem._id}`)}
-                      className="cursor-pointer border p-2 hover:border-green-custom transition"
-                      key={productItem._id}
-                    >
-                      <div>
-                        <img
-                          src={productItem.imageUrl}
-                          alt="Sale Product Item"
-                          className="object-cover w-full rounded aspect-square border-b"
-                        />
-                      </div>
-                      <div className="mt-3">
-                        <h3 className="font-bold text-gray-900">
-                          {productItem.name}
-                        </h3>
-                        <p className="mt-1 text-sm text-gray-800">
-                          {Intl.NumberFormat("vi-VN").format(productItem.price)}{" "}
-                          vnd
-                          <span className="text-red-700">{`(-${productItem.priceDrop}%) Off`}</span>
-                        </p>
-                      </div>
-                    </li>
-                  ))
-              : null}
-          </ul>
+          <ul className="grid grid-cols-3 gap-4"></ul>
         </div>
 
-        <div className="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
+        {/* <div className="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
           <div className="text-center">
             <h2 className="text-xl font-bold text-blue-custom sm:text-3xl">
               MUA THEO DANH MỤC
@@ -240,14 +193,11 @@ export default function Home() {
               </div>
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className=" rounded-[30px] bg-subscibe-footer w-[1400px] h-[323px] bg-no-repeat  mx-auto px-0">
           <div className="flex items-center justify-between py-[100px] px-16">
             <h1 className="text-5xl font-extrabold text-white">
-              Subscribe Our
-              <br />
-              Newsletter
-              <br />
+              TƯ VẤN TẠO & DẠY HỌC TRỰC TUYẾN
             </h1>
             <div className="flex items-center gap-2">
               <input

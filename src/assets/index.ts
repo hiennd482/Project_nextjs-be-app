@@ -8,7 +8,7 @@ const Objectimg = {
   twicon: require("./icons/3.png"),
   pesticon: require("./icons/4.png"),
   banner: require("./banner.jpg"),
-  sectionaboutus: require("./sectionaboutus.png"),
+  sectionaboutus: require("./newsection1.jpg"),
   foodaboutus: require("./foodaboutus.svg"),
   quality: require("./qualityaboutus.svg"),
   edit: require("./icons/edit.svg"),
