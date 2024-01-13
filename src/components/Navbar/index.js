@@ -98,13 +98,13 @@ export default function Navbar() {
           <div className="flex md:order-2 gap-2">
             {!isAdminView && isAuthUser ? (
               <Fragment>
-                <button
+                {/* <button
                   className={
                     "mt-1.5 inline-block bg-green-custom px-5 py-3 text-xs font-medium upprcase tracking-wide text-white"
                   }
                   onClick={() => router.push("/account")}
                 >
-                  Account
+                  {""}
                 </button>
                 <button
                   className={
@@ -112,8 +112,8 @@ export default function Navbar() {
                   }
                   onClick={() => setShowCartModal(true)}
                 >
-                  Cart
-                </button>
+                  {""}
+                </button> */}
               </Fragment>
             ) : null}
             {user?.role === "admin" ||
