@@ -1,6 +1,7 @@
 import React from "react";
 import iconPath from "@/assets/index";
 import Image from "next/image";
+import { images } from "../../../next.config";
 function Footer() {
   return (
     <footer className="h-96  mt-6">
@@ -45,11 +46,11 @@ function Footer() {
                 alt=""
                 className="w-[20%] h-[20%]"
               />
-              <img
-                src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg"
-                alt=""
-                className="w-[10%] h-[10%]"
-              />
+              <Image
+                src={iconPath.qrapp}
+                alt="logo"
+                className="w-[100px] h-[100px]"
+              ></Image>
             </div>
             <div className="flex gap-4 justify-center mt-8 cursor-pointer">
               <Image

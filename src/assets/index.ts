@@ -16,6 +16,7 @@ const Objectimg = {
   blank: require("./blank.jpg"),
   error: require("./loi404.jpg"),
   logo2: require("./hieduLogo.png"),
+  qrapp: require("./qrapp.png"),
 };
 
 export default Objectimg;
